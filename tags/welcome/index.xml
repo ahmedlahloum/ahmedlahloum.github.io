@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Welcome on Ahmed Lahlou Mimi</title>
+    <link>https://example.com/tags/welcome/</link>
+    <description>Recent content in Welcome on Ahmed Lahlou Mimi</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Sat, 26 May 2018 18:10:14 +0100</lastBuildDate>
+    
+	<atom:link href="https://example.com/tags/welcome/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Welcome</title>
+      <link>https://example.com/posts/welcome/</link>
+      <pubDate>Sat, 26 May 2018 18:10:14 +0100</pubDate>
+      
+      <guid>https://example.com/posts/welcome/</guid>
+      <description>&lt;p&gt;&lt;img src=&#34;https://example.com/welcome/banner.jpg&#34; alt=&#34;png&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Welcome everyone,
+My name is Ahmed Lahlou Mimi, I&amp;rsquo;m from Morocco. I’m currently a Student in Data Science (in France). I’m finishing a Gap year where I had the occasion to be a data scientist in 3 different companies.&lt;/p&gt;
+
+&lt;p&gt;I created this website to present some of my projects that I find worth sharing.
+I view this this website as an ooportunity to learn first and foremost.&lt;/p&gt;
+
+&lt;p&gt;Hope to see you soon.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

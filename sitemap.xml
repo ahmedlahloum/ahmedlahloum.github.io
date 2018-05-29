@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  
+  <url>
+    <loc>https://example.com/posts/sentiment-analysis/</loc>
+    <lastmod>2018-05-26T19:09:14+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://example.com/posts/welcome/</loc>
+    <lastmod>2018-05-26T18:10:14+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://example.com/</loc>
+    <lastmod>2018-05-26T19:09:14+01:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://example.com/categories/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://example.com/tags/cnn/</loc>
+    <lastmod>2018-05-26T19:09:14+01:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://example.com/categories/code/</loc>
+    <lastmod>2018-05-26T19:09:14+01:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://example.com/tags/data-science/</loc>
+    <lastmod>2018-05-26T18:10:14+01:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://example.com/tags/deep-learning/</loc>
+    <lastmod>2018-05-26T19:09:14+01:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://example.com/tags/keras/</loc>
+    <lastmod>2018-05-26T19:09:14+01:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://example.com/tags/lstm/</loc>
+    <lastmod>2018-05-26T19:09:14+01:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://example.com/tags/nlp/</loc>
+    <lastmod>2018-05-26T19:09:14+01:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://example.com/posts/</loc>
+    <lastmod>2018-05-26T19:09:14+01:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://example.com/tags/projects/</loc>
+    <lastmod>2018-05-26T18:10:14+01:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://example.com/tags/python/</loc>
+    <lastmod>2018-05-26T19:09:14+01:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://example.com/tags/sentiment-analysis/</loc>
+    <lastmod>2018-05-26T19:09:14+01:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://example.com/tags/</loc>
+    <lastmod>2018-05-26T19:09:14+01:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://example.com/categories/tutorials/</loc>
+    <lastmod>2018-05-26T19:09:14+01:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://example.com/tags/welcome/</loc>
+    <lastmod>2018-05-26T18:10:14+01:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+</urlset>

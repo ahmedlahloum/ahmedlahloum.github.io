@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Tags on Ahmed Lahlou Mimi</title>
+    <link>https://example.com/tags/</link>
+    <description>Recent content in Tags on Ahmed Lahlou Mimi</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Sat, 26 May 2018 19:09:14 +0100</lastBuildDate>
+    
+	<atom:link href="https://example.com/tags/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Cnn</title>
+      <link>https://example.com/tags/cnn/</link>
+      <pubDate>Sat, 26 May 2018 19:09:14 +0100</pubDate>
+      
+      <guid>https://example.com/tags/cnn/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Data Science</title>
+      <link>https://example.com/tags/data-science/</link>
+      <pubDate>Sat, 26 May 2018 18:10:14 +0100</pubDate>
+      
+      <guid>https://example.com/tags/data-science/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Deep Learning</title>
+      <link>https://example.com/tags/deep-learning/</link>
+      <pubDate>Sat, 26 May 2018 19:09:14 +0100</pubDate>
+      
+      <guid>https://example.com/tags/deep-learning/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Keras</title>
+      <link>https://example.com/tags/keras/</link>
+      <pubDate>Sat, 26 May 2018 19:09:14 +0100</pubDate>
+      
+      <guid>https://example.com/tags/keras/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Lstm</title>
+      <link>https://example.com/tags/lstm/</link>
+      <pubDate>Sat, 26 May 2018 19:09:14 +0100</pubDate>
+      
+      <guid>https://example.com/tags/lstm/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Nlp</title>
+      <link>https://example.com/tags/nlp/</link>
+      <pubDate>Sat, 26 May 2018 19:09:14 +0100</pubDate>
+      
+      <guid>https://example.com/tags/nlp/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Projects</title>
+      <link>https://example.com/tags/projects/</link>
+      <pubDate>Sat, 26 May 2018 18:10:14 +0100</pubDate>
+      
+      <guid>https://example.com/tags/projects/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Python</title>
+      <link>https://example.com/tags/python/</link>
+      <pubDate>Sat, 26 May 2018 19:09:14 +0100</pubDate>
+      
+      <guid>https://example.com/tags/python/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Sentiment Analysis</title>
+      <link>https://example.com/tags/sentiment-analysis/</link>
+      <pubDate>Sat, 26 May 2018 19:09:14 +0100</pubDate>
+      
+      <guid>https://example.com/tags/sentiment-analysis/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Welcome</title>
+      <link>https://example.com/tags/welcome/</link>
+      <pubDate>Sat, 26 May 2018 18:10:14 +0100</pubDate>
+      
+      <guid>https://example.com/tags/welcome/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Sentiment Analysis on Ahmed Lahlou Mimi</title>
+    <link>https://example.com/tags/sentiment-analysis/</link>
+    <description>Recent content in Sentiment Analysis on Ahmed Lahlou Mimi</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Sat, 26 May 2018 19:09:14 +0100</lastBuildDate>
+    
+	<atom:link href="https://example.com/tags/sentiment-analysis/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Sentiment Analysis using Convolutional Neural Networks and Bidirectional LSTMs.</title>
+      <link>https://example.com/posts/sentiment-analysis/</link>
+      <pubDate>Sat, 26 May 2018 19:09:14 +0100</pubDate>
+      
+      <guid>https://example.com/posts/sentiment-analysis/</guid>
+      <description>&lt;p&gt;&lt;img src=&#34;https://example.com/sentiment/sentiment.png&#34; alt=&#34;png&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;With the rise of social medias, Sentiment Analysis, which is one of the most well-known NLP tasks, gained a lot of importance over the years. The recent advances made on Machine Learning and Deep Learning made it an even more active task where a lot of work and research is still done.
+The goal of this project is to explore and apply the most recent technics used in this task involving Deep learning and Neural Networks and to see and quantify the benefit of using those technics to this kind of problem. This is also an opportunity for me to develop my skills in this field and test several ideas I always wanted to implement.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

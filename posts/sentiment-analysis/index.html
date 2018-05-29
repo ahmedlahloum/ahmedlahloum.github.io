@@ -1,0 +1,1482 @@
+<!DOCTYPE html>
+<html lang="en" class="wf-firasans-n4-active wf-active">
+	<head>
+    <link href="http://gmpg.org/xfn/11" rel="profile">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- Enable responsiveness on mobile devices -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+    
+    
+    <meta name="generator" content="Hugo 0.40.3" />
+    
+    <title>Sentiment Analysis using Convolutional Neural Networks and Bidirectional LSTMs. &middot; Ahmed Lahlou Mimi</title>
+    <meta content="Sentiment Analysis using Convolutional Neural Networks and Bidirectional LSTMs. - Ahmed Lahlou Mimi" property="og:title">
+    <meta content=" - " property="og:description">
+    <!-- CSS -->
+    <link href="https://fonts.googleapis.com/css?family=Fira+Sans:300,300i,400,400i|Roboto+Mono:300,300i,400,400i" rel="stylesheet">
+    <link rel="stylesheet" href="https://example.com/css/print.css" media="print">
+    <link rel="stylesheet" href="https://example.com/css/poole.css">
+    <link rel="stylesheet" href="https://example.com/css/hyde.css">
+    <!-- Font-Awesome -->
+    <script defer src="https://use.fontawesome.com/releases/v5.0.10/js/all.js" integrity="sha384-slN8GvtUJGnv6ca26v8EzVaR9DC58QEwsIk9q1QXdCU8Yu8ck/tL/5szYlBbqmS+" crossorigin="anonymous"></script>
+    <!-- highlight.js-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css">
+    <!-- Customised CSS -->
+    <link rel="stylesheet" href="https://example.com/css/custom.css">
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <!-- Icons -->
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144-precomposed.png">
+    <link rel="shortcut icon" href="/favicon.png">
+    
+
+	</head>
+    <body>
+        <div class="sidebar">
+	<div class="container text-center sidebar-sticky">
+		<div class="sidebar-about text-center">
+			<a href="https://example.com/"><h1 class="brand">Ahmed Lahlou Mimi</h1></a>
+			 <img src="/img/autor.jpg" alt="Author Image" class="img-circle headshot center"> 
+			<p class="lead">
+				 Student in Data Science. 
+			</p>
+		</div>
+		
+<div>
+	<ul class="sidebar-nav">
+		
+		
+				<li>
+					<a href="/posts/"> <span>Posts</span></a>
+				</li>
+		</li>
+	</ul>
+</div>
+
+        <p>
+		<section class="row text-center">
+	
+	<a href="https://twitter.com/LahlouMimiAhme1"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a>
+	
+	
+	
+	
+	
+	
+	&nbsp;<a href="https://linkedin.com/in/ahmed-lahlou-mimi-6ba924122"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a>
+	
+	
+	&nbsp;<a href="https://stackoverflow.com/users/9160548"><i class="fab fa-stack-overflow fa-lg" aria-hidden="true"></i></a>
+	
+	
+	
+	
+	&nbsp;<a href="mailto:ahmed.lahlou-mimi@student.ecp.fr"><i class="fas fa-at fa-lg" aria-hidden="true"></i></a>
+	
+</section>
+
+        </p>
+	</div>
+	<div>
+	</div>
+</div>
+
+        <div class="content container">
+            <div class="post">
+  <h1>Sentiment Analysis using Convolutional Neural Networks and Bidirectional LSTMs.</h1>
+  
+  <div class="col-sm-12 col-md-12">
+    <span class="text-left post-date meta">
+            
+       
+        <i class="fas fa-calendar-alt"></i> May 26, 2018
+      
+      
+        
+        
+            in
+            
+            
+                <a class="meta" href="/categories/code">CODE</a>
+                ,
+            
+                <a class="meta" href="/categories/tutorials">TUTORIALS</a>
+                
+            
+        
+      
+      
+      
+        
+        
+            <br/>
+             <i class="fas fa-tags"></i>
+            
+            <a class="meta" href="/tags/cnn">cnn</a> 
+        
+            <a class="meta" href="/tags/deep-learning">deep learning</a> 
+        
+            <a class="meta" href="/tags/keras">keras</a> 
+        
+            <a class="meta" href="/tags/lstm">lstm</a> 
+        
+            <a class="meta" href="/tags/nlp">nlp</a> 
+        
+            <a class="meta" href="/tags/python">python</a> 
+        
+            <a class="meta" href="/tags/sentiment-analysis">sentiment analysis</a>
+        
+      
+      
+      <br/>
+      <i class="fas fa-clock"></i> 30 min read 
+      </span>  
+  </div>    
+  
+  <p><img src="/sentiment/sentiment.png" alt="png" /></p>
+
+<p>With the rise of social medias, Sentiment Analysis, which is one of the most well-known NLP tasks, gained a lot of importance over the years. The recent advances made on Machine Learning and Deep Learning made it an even more active task where a lot of work and research is still done.
+The goal of this project is to explore and apply the most recent technics used in this task involving Deep learning and Neural Networks and to see and quantify the benefit of using those technics to this kind of problem. This is also an opportunity for me to develop my skills in this field and test several ideas I always wanted to implement.</p>
+
+<p></p>
+
+<p>Therefore, in this project, we will mainly implement relatively recent NLP technics. The dataset we will use is an ensemble of Movie Reviews on the Rotten Tomatoes website. The Dataset can be downloaded from this Kaggle competition: <a href="https://www.kaggle.com/c/sentiment-analysis-on-movie-reviews">https://www.kaggle.com/c/sentiment-analysis-on-movie-reviews</a>.</p>
+
+<p>Here is a quick description of the dataset coming from the competition’s description: &lsquo;The Rotten Tomatoes movie review dataset is a corpus of movie reviews used for sentiment analysis, &hellip;, You are asked to label phrases on a scale of five values: negative, somewhat negative, neutral, somewhat positive, positive. Obstacles like sentence negation, sarcasm, terseness, language ambiguity, and many others make this task very challenging. &lsquo;</p>
+
+<p>I chose this dataset because I found it more challenging: Traditionally, Sentiment Analysis tasks asks you to classify either a sentence is good or bad. The problem we have is more specific, including 5 levels of sentiment, and involves a more &lsquo;subjective&rsquo; target, which will allow us to see if the latest NLP models can grasp this kind of subtilty better.</p>
+
+<p>More especially, I started this project to Answer those specific questions:</p>
+
+<ul>
+<li>How RNNs and CNNs performs in this kind of problem?</li>
+<li>Can we combine CNNs and RNNs to have better Results?</li>
+<li>What is the benefit of using Pre-trained word embeddings Like Word2Vec or Glove?</li>
+<li>How can we use more &lsquo;traditional&rsquo; NLP tricks Like Stemming, Lemmatization etc. to improve performance?</li>
+<li>Can recent researches improve significantly our results?</li>
+</ul>
+
+<p>We will start by an exploration of our dataset, then we will quickly preprocess our dataset before proceeding to the modeling part where we will test several architectures of neural networks and then try to implement an architecture recently proposed in a research paper.</p>
+
+<h2 id="data-exploration">Data Exploration :</h2>
+
+<pre><code class="language-python">%%capture
+%pylab inline
+
+import warnings
+warnings.filterwarnings('ignore')
+
+import pandas as pd
+
+import seaborn as sns
+sns.set(style=&quot;white&quot;, rc={&quot;axes.facecolor&quot;: (0, 0, 0, 0)})
+
+from wordcloud import WordCloud, STOPWORDS
+from collections import Counter
+
+np.random.seed(10)
+</code></pre>
+
+<p>Let&rsquo;s first take a deeper look at the data we have.</p>
+
+<p>This will allow us to apprehend better the task we are facing and grasp the complexity of the situation.</p>
+
+<p><strong>Importing the data</strong> :</p>
+
+<pre><code class="language-python"># Loading the data 
+df = pd.read_table('train.tsv' , header = 0)
+
+print('Shape: ' , df.shape)
+df.head()
+</code></pre>
+
+<pre><code>Shape:  (156060, 4)
+</code></pre>
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>PhraseId</th>
+      <th>SentenceId</th>
+      <th>Phrase</th>
+      <th>Sentiment</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1</td>
+      <td>1</td>
+      <td>A series of escapades demonstrating the adage ...</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2</td>
+      <td>1</td>
+      <td>A series of escapades demonstrating the adage ...</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>3</td>
+      <td>1</td>
+      <td>A series</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>4</td>
+      <td>1</td>
+      <td>A</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>5</td>
+      <td>1</td>
+      <td>series</td>
+      <td>2</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<p>Looking at the shape of the Dataframe, it seems that we have around 150K Sentences, but, many lines are parts of a main sentence. Those parts have also been labeled with a Sentiment. It seems that it is some sort of Data Augmentation performed by the authors to increase the size of the dataset.</p>
+
+<p>If we were working on this problem as a competition, we would have kept these parts in both the training and test set, but the goal of the project is to develop a tool capable of determining the sentiment of a whole sentence, and not just a unique word or a part of a sentence that may not even have a sense for us.</p>
+
+<p>But this Improvement of the dataset is still good to the training process of our Model, but worthless during test time, since we want to see the performance of our model in a &lsquo;real&rsquo; situation. Thus, we are going to remove them from the test set only.</p>
+
+<p>But before talking about training and test set, let&rsquo;s first see how many complete sentences we have and then decide of train/test split.</p>
+
+<pre><code class="language-python">print('Total number of sentences : ' , len(df.SentenceId.unique()))
+</code></pre>
+
+<pre><code>Total number of sentences :  8529
+</code></pre>
+
+<p>We have 8529 Sentences. We are going to use 700 sentences for the test set and leave the rest for the training set. Also, we are going to keep only parts of sentences that have a number of words greater than 5 : We assume that they do not bring much value to the model.</p>
+
+<pre><code class="language-python"># Only complete lines 
+first_df = st_df = df.groupby('SentenceId' , as_index = False).first()
+
+# take the 1000 last complete lines, that we will use for the test set
+st_df = df[df.SentenceId &gt; 7829].reset_index(drop = True)
+st_df = st_df.groupby('SentenceId' , as_index = False).first()
+
+df = df[df.SentenceId &lt;= 7829]
+df = df[df.Phrase.apply(lambda x:len(x.split(' ')) ) &gt; 5 ]
+
+# We shuffle the dataframe
+df = df.sample(frac = 1).reset_index(drop = True)
+
+st_df = df.append(st_df , ignore_index = False).reset_index(drop = True)
+</code></pre>
+
+<h3 id="distribution-of-the-labels">Distribution of the labels :</h3>
+
+<p>Let&rsquo;s now take a deeper look to the labels we have:</p>
+
+<pre><code class="language-python"># Sentiment Count 
+
+
+print('                      Complete lines :')
+print(first_df.shape[0] , 'lines')
+counts = first_df.Sentiment.value_counts()
+
+fig = plt.figure(figsize=(8 , 4))
+sns.barplot(x = counts.index.values , y = counts)
+plt.show()
+
+print('                      Augmented dataset :')
+print(df.shape[0] , 'lines')
+counts = df.Sentiment.value_counts()
+
+fig = plt.figure(figsize=(8 , 4))
+sns.barplot(x = counts.index.values , y = counts)
+plt.show()
+
+
+print('                      Test dataset :')
+print(1000 , 'lines')
+counts = st_df.Sentiment[-1000:].value_counts()
+
+fig = plt.figure(figsize=(8 , 4))
+sns.barplot(x = counts.index.values , y = counts)
+plt.show()
+</code></pre>
+
+<pre><code>                      Complete lines :
+8529 lines
+</code></pre>
+
+<p><img src="/sentiment/output_13_1.png" alt="png" /></p>
+
+<pre><code>                      Augmented dataset :
+61724 lines
+</code></pre>
+
+<p><img src="/sentiment/output_13_3.png" alt="png" /></p>
+
+<pre><code>                      Test dataset :
+1000 lines
+</code></pre>
+
+<p><img src="/sentiment/output_13_5.png" alt="png" /></p>
+
+<pre><code class="language-python">df.head(10)
+</code></pre>
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>PhraseId</th>
+      <th>SentenceId</th>
+      <th>Phrase</th>
+      <th>Sentiment</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>85551</td>
+      <td>4424</td>
+      <td>these components combine into one terrific sto...</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>8321</td>
+      <td>345</td>
+      <td>raises the film above anything Sandler 's been...</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>82093</td>
+      <td>4235</td>
+      <td>new `` A Christmas Carol ''</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>38277</td>
+      <td>1822</td>
+      <td>the rush to save the day did I become very inv...</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>124066</td>
+      <td>6661</td>
+      <td>attempts to show off his talent by surrounding...</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>78649</td>
+      <td>4048</td>
+      <td>as if -LRB- there 's -RRB- a choke leash aroun...</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>36939</td>
+      <td>1750</td>
+      <td>is truly gorgeous to behold .</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>105689</td>
+      <td>5579</td>
+      <td>just as expectant of an adoring , wide-smiling...</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>8728</td>
+      <td>364</td>
+      <td>comes from taking John Carpenter 's Ghosts of ...</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>113368</td>
+      <td>6024</td>
+      <td>want to bang your head on the seat in front of...</td>
+      <td>0</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<p>It seems that we have fewer observations for both negative (0) and positive sentences (4), but the difference is not too big with the other classes to justify the need of over/under-sampling or other technics to close the gap.</p>
+
+<h3 id="sequence-length-vocabulary-wordcloud">Sequence length, Vocabulary &amp; WordCloud.</h3>
+
+<p><strong>Sequence length</strong></p>
+
+<p>Let&rsquo;s look at the sequences Lengths, this is important since most of the algorithms we are going to use take fixed shape inputs, we will therefore need to pad the sequences to have equal sizes. This also gives us an idea on the of sentences we have.</p>
+
+<pre><code class="language-python"># lengths:
+lengths = st_df.Phrase.apply(lambda x:len(x.split(' ')) )
+
+lengths.plot.hist(bins = 100)
+plt.show()
+
+# Quantiles
+print(lengths.quantile([i*0.1 for i in range(11)]))
+</code></pre>
+
+<p><img src="/sentiment/output_19_0.png" alt="png" /></p>
+
+<pre><code>0.0     1.0
+0.1     6.0
+0.2     7.0
+0.3     8.0
+0.4     9.0
+0.5    11.0
+0.6    13.0
+0.7    15.0
+0.8    18.0
+0.9    24.0
+1.0    52.0
+Name: Phrase, dtype: float64
+</code></pre>
+
+<p>40% of our sentences have less than 9 words (probably parts of sentences) and 80% of them have less than 18 words. The longest sentence has 52 words. We can pad all the sentences to have the same length or we can choose to drop all the words after a certain number.</p>
+
+<p><strong>Vocabulary</strong></p>
+
+<p>Let&rsquo;s take a closer look to the vocabulary of our data. We will first look at the whole vocabular and then see how it changes from a sentiment to another.</p>
+
+<pre><code class="language-python">sentences = ' '.join(st_df.Phrase.values)
+print('total number of unique words :' , len(set(sentences.split(' '))))
+stopwords = set(STOPWORDS)
+
+
+for label in range(5):
+    
+    print('vocabulary for label :' , label)
+    sub_sentences = ' '.join(st_df.loc[st_df.Sentiment == label, 'Phrase'].values)
+    print('total number of unique words :' , len(set(sub_sentences.split(' '))))
+    
+    wc = WordCloud(background_color='white', width=1024, height=512,
+                   max_words=1000, stopwords=stopwords, margin=10,
+                   random_state=1).generate(sub_sentences)
+
+    plt.figure(figsize=(12 , 30))
+    plt.imshow(wc)
+    plt.axis('off')
+    plt.show()
+
+</code></pre>
+
+<pre><code>total number of unique words : 17970
+vocabulary for label : 0
+total number of unique words : 7165
+</code></pre>
+
+<p><img src="/sentiment/output_23_1.png" alt="png" /></p>
+
+<pre><code>vocabulary for label : 1
+total number of unique words : 12086
+</code></pre>
+
+<p><img src="/sentiment/output_23_3.png" alt="png" /></p>
+
+<pre><code>vocabulary for label : 2
+total number of unique words : 14155
+</code></pre>
+
+<p><img src="/sentiment/output_23_5.png" alt="png" /></p>
+
+<pre><code>vocabulary for label : 3
+total number of unique words : 12195
+</code></pre>
+
+<p><img src="/sentiment/output_23_7.png" alt="png" /></p>
+
+<pre><code>vocabulary for label : 4
+total number of unique words : 7363
+</code></pre>
+
+<p><img src="/sentiment/output_23_9.png" alt="png" /></p>
+
+<p>it seems that the vocabulary size of each class follows the trend of the number of sentences (less vocabulary for the Sentiment 0 and 4). Also, we can see that the vocabulary of the sentiment 0 &amp; 1 is roughly the same (same thing for 3 &amp; 4). Our models will have to rely more on the order of the words rather than the vocabulary to differentiate between a negative statement and somewhat negative statement.</p>
+
+<p>Let&rsquo;s now look at the frequency of these words:</p>
+
+<pre><code class="language-python"># Most frequent and less frequent words :
+
+counts = dict(Counter(sentences.split(' ')))
+counts = pd.DataFrame([counts.keys() , counts.values()]).T.sort_values(1 , ascending = False).reset_index(drop = True)
+
+print(counts.head(20))
+print(counts.tail(20))
+</code></pre>
+
+<pre><code>        0      1
+0     the  35502
+1       ,  34073
+2      of  25748
+3       a  25210
+4     and  23071
+5      to  18446
+6       .  15216
+7      's  12535
+8      in  10825
+9    that  10575
+10     is  10518
+11     it   8334
+12     as   6824
+13   with   6098
+14    for   5710
+15    its   4898
+16   film   4889
+17     an   4430
+18  movie   4211
+19    but   4109
+                   0  1
+17950        Grenier  1
+17951         tables  1
+17952      Komediant  1
+17953          Seeks  1
+17954         Notice  1
+17955     Discursive  1
+17956     Efteriades  1
+17957       quibbles  1
+17958       Grown-up  1
+17959        poor-me  1
+17960   Ghostbusters  1
+17961           Eddy  1
+17962  transgression  1
+17963    Continually  1
+17964           hats  1
+17965         stayed  1
+17966       blustery  1
+17967    pandemonium  1
+17968       Yourself  1
+17969       chortles  1
+</code></pre>
+
+<p>Quantiles :</p>
+
+<pre><code class="language-python"># Quantiles
+print(counts[1].quantile([i*0.1 for i in range(11)]))
+</code></pre>
+
+<pre><code>0.0        1
+0.1        2
+0.2        4
+0.3        5
+0.4        7
+0.5        9
+0.6       11
+0.7       15
+0.8       24
+0.9       47
+1.0    35502
+Name: 1, dtype: object
+</code></pre>
+
+<p>Distribution of the log of the number of occurences per word :</p>
+
+<pre><code class="language-python">counts[1].apply(lambda x:np.log(x)).plot.hist(bins = 30)
+</code></pre>
+
+<pre><code>&lt;matplotlib.axes._subplots.AxesSubplot at 0x1f2624d7048&gt;
+</code></pre>
+
+<p><img src="/sentiment/output_29_1.png" alt="png" /></p>
+
+<p>There is a non-negligible amount of words that have very few occurrences (either rarely used words, numbers or misspellings). In traditional technics, those words are known to easily lead to overfit and are generally removed from the dataset. But Since we also intend to use pretrained word embeddings like Word2Vec or Glove, we are going to keep this words for the moment.</p>
+
+<h2 id="text-preprocessing">Text Preprocessing :</h2>
+
+<p>The goal of this part is to convert each sentence to a sequence of tokens. We also add stemming and lemmatization (which can be used separately) in a way that we can enable/disable them to see their effect on the model. We will use stemming for the first part where we won&rsquo;t use a pre-trained word embedding. We won&rsquo;t go any further than that since it&rsquo;s not the goal of this project.</p>
+
+<p>The tokenizer we use is the Treebank Tokenizer. to see how this tokenizer splits a sentence:</p>
+
+<p><a href="ftp://ftp.cis.upenn.edu/pub/treebank/public_html/tokenization.html">ftp://ftp.cis.upenn.edu/pub/treebank/public_html/tokenization.html</a></p>
+
+<pre><code class="language-python">from nltk.tokenize import TreebankWordTokenizer
+from nltk.stem.wordnet import WordNetLemmatizer
+from nltk.stem import PorterStemmer
+</code></pre>
+
+<pre><code class="language-python"># Functions that do text preprocessing
+
+# We use the treebank tokenizer.
+treebank_tokenizer = TreebankWordTokenizer()
+# lemmatization.
+lem = WordNetLemmatizer()
+# Stemming.
+stemmer = PorterStemmer()
+
+def tokenize(x):
+    return ' '.join(treebank_tokenizer.tokenize(x))
+
+def lemmatize(x):
+    return ' '.join([lem.lemmatize(s) for s in x.split(' ')])
+
+def stem(x):
+    return ' '.join([stemmer.stem(s) for s in x.split(' ')])
+
+# Apply the transformations :
+sentences = st_df.Phrase.apply(tokenize)
+sentences = sentences.apply(stem)
+</code></pre>
+
+<h2 id="modeling">Modeling:</h2>
+
+<pre><code class="language-python">import keras
+from keras.models import Sequential , load_model , Model
+from keras.layers import Dense , LSTM, Dropout , Conv1D , MaxPooling1D , Input, Reshape , Masking , TimeDistributed
+from keras.layers import Concatenate , BatchNormalization , Bidirectional , Activation , GlobalMaxPooling1D
+from keras.preprocessing.sequence import TimeseriesGenerator , pad_sequences
+from keras.callbacks import History , ModelCheckpoint
+from keras.preprocessing.text import Tokenizer
+from keras.constraints import maxnorm
+from keras.regularizers import l1_l2
+
+from keras.layers import Embedding
+from sklearn.preprocessing import MinMaxScaler
+from sklearn.metrics import mean_squared_error , precision_score , accuracy_score
+from sklearn.metrics import recall_score , confusion_matrix, roc_curve, auc
+
+#from gensim.models import Word2Vec, KeyedVectors
+</code></pre>
+
+<pre><code>Using TensorFlow backend.
+</code></pre>
+
+<p>We will now proceed to the modeling part. This part addresses two separate matters: The use of word embeddings and the architecture of the neural network to use:</p>
+
+<ul>
+<li><p>We are going to see what performance we have with an Embedding Layer trained from scratch, and then use a pre-trained Word Embedding (Glove) to see how it improves our Model.</p></li>
+
+<li><p>We are going to test two different neural network architecture that have proven to be particularly adapted to this Kind of situation: first, a 1-Dimensional Convolutional network followed by a Fully connected network. The other architecture is a BI-LSTM Network followed by a Fully Connected Network.</p></li>
+
+<li><p>After testing separately, the CNN and the LSTM architectures, we are going to try to combine these two networks into a single model. We will first try to stack them in sequential way, then in a parallel way (The parallel architecture is inspired from a research paper that we will discuss later).</p></li>
+</ul>
+
+<p>To simplify the code and to not have to code a model on each try, we are going to use a Function that can perform either the CNN architecture, the BI-LSTM architecture or both stacked in a Sequential way. A simple change in the parameters will allow us to test these 3 networks</p>
+
+<h3 id="using-an-embeding-layer">Using an embeding Layer :</h3>
+
+<p>The first set of models we are going to try will be using an embedding Layer to transform the input before feeding it into the network. This layer will be trained from Scratch with the other components of the network. This isn&rsquo;t a good idea since we have relatively few sentences but it will allow us to see how much we can gain by using a pretrained embedding.</p>
+
+<p>We use embeddings because it allows us to avoid the <strong>sparsity</strong> and the <strong>High dimensionality</strong> of One Hot encoded vectors. It also allows us to get a sense of the similarity between the words we have, since it basically converts a word to a vector.</p>
+
+<p><img src="/sentiment/embedding.png" style="width: 600px;"></p>
+
+<p>in its core, the embedding layer is simply a matrix, each column being a word in the vocabulary. when this layer gets a word as an input, it simply replaces it with the corresponding column. The values of the matrix are trainable and that&rsquo;s what allows the layer to grasp the similarities between words. Since we are training our network on Sentiments, the embedding Layer will exclusively grasp the sentiment polarity of the words.</p>
+
+<h4 id="keras-text-preprocessing">Keras Text preprocessing</h4>
+
+<p>Before creating our model, we need first to convert our text to sequences of tokens, and pad tose sequences to have the same length.</p>
+
+<p>We use Keras text preprocessing fucntions to do that</p>
+
+<pre><code class="language-python"># Tokenizer (object that will split a sentence to a set of toquens. we already did the work with ... à revoir  )
+tokenizer = Tokenizer()
+tokenizer.fit_on_texts(sentences)
+
+# Convert text to sequences
+X = tokenizer.texts_to_sequences(sentences)
+
+# Sequences padding.
+X = pad_sequences(X)
+
+# We construct the target.
+Y = pd.get_dummies(st_df.Sentiment).values
+
+# Vocabulary Size.
+vocab_size = len(tokenizer.word_index) + 1
+
+
+print(&quot;Vocab size : &quot;,vocab_size)
+print(&quot;X's shape : &quot; , X.shape)
+</code></pre>
+
+<pre><code>Vocab size :  10962
+X's shape :  (62437, 49)
+</code></pre>
+
+<h4 id="baseline-model">Baseline Model.</h4>
+
+<p>Before building our model, we need fist to build a &lsquo;baseline&rsquo; or &lsquo;dummy&rsquo; model, which will allow us to see if our model is learning anything useful.</p>
+
+<p>Since we have a classification problem, let&rsquo;s just see what would be the accuracy of a model that always predict the most recurrent class in our dataset.</p>
+
+<pre><code class="language-python">print('Baseline Model Accuracy : ' , accuracy_score( st_df.Sentiment.values[-700:] , [3 for _ in range(700)] ) )
+</code></pre>
+
+<pre><code>Baseline Model Accuracy :  0.275714285714
+</code></pre>
+
+<h4 id="convolutional-networks">Convolutional Networks:</h4>
+
+<p>We will first try the Convolutional Network. This networks are better known for Computer Vision problems, but they are also widely used in NLP tasks.</p>
+
+<p>since we have sequences of 1 elements, we will use Conv1D layers (One dimensional Convolutional layers).</p>
+
+<p><img src="/sentiment/conv1d.jpg" style="width: 600px;"></p>
+
+<p>Convolutional networks have many strengths that make them very useful for this kind of tasks:
+* Use shared weights for every location, thus reducing significativly the number of parameters and allowing to generalise what is learned locally to the whole sequence.
+* Can detect local patterns and local relationships between data.</p>
+
+<pre><code class="language-python"># Model
+
+def model(X , Y , embed_dim , vocab_size,
+          lstm_layers = [] , lstm_dropout = [],
+          cnn_layers = [] , cnn_kernels = [] , cnn_dropout = [], 
+          max_pooling_layers = [] , max_pooling = False ,
+          dense_layers = [] , dense_dropout = [] ,
+          ntest_sers = 400 , epochs = 10 , batch_size = 32 , lr = 0.001 , decay = 0 , beta_1 = 0.9 , beta_2 = 0.999):
+        
+        
+    # training and testing set :
+    length  = X.shape[0] 
+    target_shape = Y.shape[1]
+    
+    # Validation rate to pass to the Sequential Model :
+    val_rate = ntest_sers/length
+    
+    
+    ############################################ Model :
+    
+    history = History()
+    checkpoint = ModelCheckpoint('models/model' , save_best_only=True)
+    
+    model = Sequential()
+    
+    #Embeding layer
+    model.add(Embedding(vocab_size, embed_dim,input_length = X.shape[1]))
+    
+
+    # Conv Layers
+    for i in range(len(cnn_layers)):
+        # Padding ? 
+        model.add(Conv1D(cnn_layers[i] , cnn_kernels[i] ,padding = 'same' ) )
+        model.add(BatchNormalization())
+        model.add(Activation('relu'))
+        model.add(Dropout(cnn_dropout[i]))
+        
+        if max_pooling:
+            model.add(MaxPooling1D(max_pooling_layers[i] , stride = 1 , padding = 'same'))
+    
+    if len(lstm_layers) == 0:
+        
+        #model.add(Reshape((-1,) ) ) # Reshaping
+        #model.add( Reshape((lstm_layers[-1], X.shape[1]))  ) #for max pooling over time 
+        model.add(GlobalMaxPooling1D())
+    
+    
+    # BI-LSTM Layers
+    for i in range(len(lstm_layers)):
+        
+        rsequs  = not (i == (len(lstm_layers) - 1))
+        model.add(Bidirectional( LSTM(lstm_layers[i] , return_sequences = rsequs) ) )
+        
+        if len(lstm_dropout)&gt;0:
+            model.add(Dropout(lstm_dropout[i]))
+                      
+    # Dense Layers        
+    for i in range(len(dense_layers)):
+         
+        model.add(Dense(dense_layers[i] , activation = 'relu') )
+        
+        if len(dense_dropout)&gt;0:
+            model.add(Dropout(dense_dropout[i]))  
+        
+    model.add(Dense(target_shape , activation = 'softmax'))
+    
+
+    #adm = keras.optimizers.Adam(lr = lr , decay = decay)
+    #sgd = keras.optimizers.SGD(lr = lr , nesterov=True, momentum=0.7, decay=1e-4)
+    Nadam = keras.optimizers.Nadam(lr = lr , beta_1=0.9, beta_2=0.999, epsilon=1e-08)#, schedule_decay=0.0004)
+    model.compile(loss='categorical_crossentropy', optimizer= Nadam , metrics = ['accuracy'])
+
+    
+    # fitting the data
+    model.fit(X, Y, epochs= epochs, batch_size=batch_size, validation_split = val_rate ,
+              callbacks = [history , checkpoint])
+    
+    
+    # loading best_model
+    model = load_model('models/model')
+
+              
+    # loading best_model
+    return model , min(history.history['val_loss'])
+</code></pre>
+
+<p>We are going to fit a network with an embedding layer outputting a 256 sized vector for each word, only one CNN layer with 128 filters and a kernel size of 3, followed by a Fully connected network.</p>
+
+<p>The parameters have been chosen accordingly to some articles and papers and are not the result of fine tuning (which should be done).</p>
+
+<pre><code class="language-python"># 1 layer 256
+
+val = 700
+
+results = model( X , Y , embed_dim = 256 , vocab_size = vocab_size,
+               cnn_layers = [128] , cnn_kernels = [3] , cnn_dropout = [.4],
+               max_pooling = True , max_pooling_layers = [3],
+               dense_layers = [64 ] , dense_dropout = [.5],
+               batch_size = 256 , epochs = 10 , ntest_sers = val , lr = 0.001 )
+</code></pre>
+
+<pre><code>Train on 61737 samples, validate on 700 samples
+Epoch 1/10
+61737/61737 [==============================] - 31s 500us/step - loss: 1.4138 - acc: 0.3873 - val_loss: 1.4164 - val_acc: 0.3800
+Epoch 2/10
+61737/61737 [==============================] - 28s 454us/step - loss: 1.1197 - acc: 0.5148 - val_loss: 1.3441 - val_acc: 0.4029
+Epoch 3/10
+61737/61737 [==============================] - 28s 455us/step - loss: 1.0177 - acc: 0.5587 - val_loss: 1.3644 - val_acc: 0.4143
+Epoch 4/10
+61737/61737 [==============================] - 28s 452us/step - loss: 0.9574 - acc: 0.5838 - val_loss: 1.3496 - val_acc: 0.4186
+Epoch 5/10
+61737/61737 [==============================] - 28s 453us/step - loss: 0.9223 - acc: 0.5977 - val_loss: 1.3460 - val_acc: 0.4329
+Epoch 6/10
+61737/61737 [==============================] - 28s 458us/step - loss: 0.8927 - acc: 0.6083 - val_loss: 1.4009 - val_acc: 0.4157
+Epoch 7/10
+61737/61737 [==============================] - 28s 455us/step - loss: 0.8630 - acc: 0.6186 - val_loss: 1.4528 - val_acc: 0.4114
+Epoch 8/10
+61737/61737 [==============================] - 28s 459us/step - loss: 0.8381 - acc: 0.6242 - val_loss: 1.4789 - val_acc: 0.4171
+Epoch 9/10
+61737/61737 [==============================] - 28s 458us/step - loss: 0.8205 - acc: 0.6317 - val_loss: 1.5024 - val_acc: 0.4157
+Epoch 10/10
+61737/61737 [==============================] - 28s 459us/step - loss: 0.7970 - acc: 0.6410 - val_loss: 1.4987 - val_acc: 0.4214
+</code></pre>
+
+<p>Results: 43% Validation accuracy, which is already good since we have 5 classes to predict.</p>
+
+<p>Validation Accuracy stops improving after a short number of epochs, but the model is globally fast to train. Adding more convolutional layers doesn&rsquo;t impact the performance and even lead to overfit in some cases.</p>
+
+<p>Since it&rsquo;s our first model, let&rsquo;s take a deeper look at the performance of our model.</p>
+
+<pre><code class="language-python"># prediction
+y_score = results[0].predict(X[-val:])
+y_pred = np.argmax(y_score , axis = 1)
+
+# True values
+y_test = st_df.Sentiment.values[-val:]
+
+# Confusion matrix
+hmap = confusion_matrix(y_test , y_pred)
+sns.heatmap(hmap , cmap = 'Blues' , annot = True)
+plt.show()
+
+# Metrics :
+print('accuracy :' , accuracy_score(y_test , y_pred))
+print('precisions :' , precision_score(y_test , y_pred , average = None))
+print('recalls :' , recall_score(y_test , y_pred , average = None))
+
+# Compute ROC curve and ROC area for each class
+fpr = dict()
+tpr = dict()
+roc_auc = dict()
+n_classes = 5
+
+for i in range(n_classes):
+    fpr[i], tpr[i], _ = roc_curve(y_test, y_score[:, i] , pos_label = i)
+    roc_auc[i] = auc(fpr[i], tpr[i])
+
+# Plot of a ROC curve for a specific class
+for i in range(n_classes):
+    print('class no :' , i )
+    
+    plt.figure()
+    plt.plot(fpr[i], tpr[i], label='ROC curve (area = %0.2f)' % roc_auc[i])
+    plt.plot([0, 1], [0, 1], 'k--')
+    plt.xlim([0.0, 1.0])
+    plt.ylim([0.0, 1.05])
+    plt.xlabel('False Positive Rate')
+    plt.ylabel('True Positive Rate')
+    plt.title('Receiver operating characteristic example')
+    plt.legend(loc=&quot;lower right&quot;)
+    plt.show()
+</code></pre>
+
+<p><img src="/sentiment/output_52_0.png" alt="png" /></p>
+
+<pre><code>accuracy : 0.401428571429
+precisions : [ 0.66666667  0.41137124  0.25862069  0.43359375  0.57692308]
+recalls : [ 0.0212766   0.67955801  0.234375    0.57512953  0.14423077]
+class no : 0
+</code></pre>
+
+<p><img src="/sentiment/output_52_2.png" alt="png" /></p>
+
+<pre><code>class no : 1
+</code></pre>
+
+<p><img src="/sentiment/output_52_4.png" alt="png" /></p>
+
+<pre><code>class no : 2
+</code></pre>
+
+<p><img src="/sentiment/output_52_6.png" alt="png" /></p>
+
+<pre><code>class no : 3
+</code></pre>
+
+<p><img src="/sentiment/output_52_8.png" alt="png" /></p>
+
+<pre><code>class no : 4
+</code></pre>
+
+<p><img src="/sentiment/output_52_10.png" alt="png" /></p>
+
+<p>We can see that the model is pretty good at separating positive from negative reviews, but performs poorly on the neutral reviews. Those comments generally contain both positive and negative words at the same time, which may confuse this type of network. The model also doesn&rsquo;t perform good when it&rsquo;s about the sentiments 0 and 4. These sentiments are generally classified as their homologs (1 and 3). The difference between these sentiments is subtler and more subjective, which may induce these errors.</p>
+
+<p>We can also look at some mislabeled reviews to understand more why the model fails at classifying them.</p>
+
+<pre><code class="language-python"># Examples of mislabelled sentences
+
+&quot;&quot;&quot;prediction = 1
+target = 3
+
+test_sentences = st_df.Phrase[-val:].reset_index(drop = True)
+
+test_sentences[(y_test == target) &amp; (y_pred == prediction)].values&quot;&quot;&quot;
+</code></pre>
+
+<h4 id="bi-lstm-network">BI-LSTM Network :</h4>
+
+<p>Let&rsquo;s now test another type of Architecture.</p>
+
+<p>The Long Short-Term memory architecture is a Recurrent Neural Network, specially designed to avoid vanishing/exploding gradient. RNNs are known to be specially adapted to NLP tasks due to their nature and their ability to process sequence data. They are closer to how us humans look at a sentence when we are reading it.</p>
+
+<p>We are going to build a similar architecture to the last model, but we are going to replace the convolutional layer by a LSTM:</p>
+
+<p><img src="/sentiment/HXquSh3.png" style="width: 400px;"></p>
+
+<p>We are not going to use the classic implementation of LSTMS, but rather a Bidirectional LSTM, which will allow us to look at a sentence both ways:</p>
+
+<p><img src="/sentiment/bilstm.png" style="width: 600px;"></p>
+
+<p>Like the previous model, we choose the parameters accordingly to build this architecture.</p>
+
+<pre><code class="language-python">val = 700
+
+results = model( X , Y , embed_dim = 256 , vocab_size = vocab_size,
+               lstm_layers = [128 , 128] , lstm_dropout = [.5 , .5],
+               dense_layers = [64 ] , dense_dropout = [.5],
+               batch_size = 256 , epochs = 10 , ntest_sers = val , lr = 0.001 )
+</code></pre>
+
+<pre><code>Train on 61737 samples, validate on 700 samples
+Epoch 1/10
+61737/61737 [==============================] - 218s 4ms/step - loss: 1.2774 - acc: 0.4409 - val_loss: 1.4513 - val_acc: 0.3871
+Epoch 2/10
+61737/61737 [==============================] - 212s 3ms/step - loss: 1.0098 - acc: 0.5724 - val_loss: 1.4837 - val_acc: 0.4186
+Epoch 3/10
+61737/61737 [==============================] - 213s 3ms/step - loss: 0.9192 - acc: 0.6106 - val_loss: 1.4998 - val_acc: 0.4129
+Epoch 4/10
+61737/61737 [==============================] - 213s 3ms/step - loss: 0.8623 - acc: 0.6321 - val_loss: 1.4799 - val_acc: 0.4214
+Epoch 5/10
+61737/61737 [==============================] - 211s 3ms/step - loss: 0.8127 - acc: 0.6479 - val_loss: 1.5594 - val_acc: 0.4200
+Epoch 6/10
+61737/61737 [==============================] - 215s 3ms/step - loss: 0.7808 - acc: 0.6585 - val_loss: 1.7074 - val_acc: 0.4186
+Epoch 7/10
+61737/61737 [==============================] - 208s 3ms/step - loss: 0.7505 - acc: 0.6672 - val_loss: 1.7667 - val_acc: 0.4157
+Epoch 8/10
+61737/61737 [==============================] - 83s 1ms/step - loss: 0.7234 - acc: 0.6777 - val_loss: 1.7902 - val_acc: 0.4057
+Epoch 9/10
+61737/61737 [==============================] - 82s 1ms/step - loss: 0.7015 - acc: 0.6839 - val_loss: 1.9467 - val_acc: 0.4129
+Epoch 10/10
+61737/61737 [==============================] - 82s 1ms/step - loss: 0.6800 - acc: 0.6910 - val_loss: 2.0678 - val_acc: 0.4100
+</code></pre>
+
+<p>Results: The LSTM is slower to train. Final Results are fairly the same as the convolutional Layer. Adding a second layer of LSTM doesn&rsquo;t improve accuracy.</p>
+
+<p>No need to look at the results here, we will directly jump to the sequential architecture (Conv LSTM). But before that, let&rsquo;s introduce pre-trained word embeddings.</p>
+
+<h3 id="modeling-using-pre-trained-word-embeding">Modeling : Using Pre-trained Word Embeding.</h3>
+
+<p>GloVe is an unsupervised learning algorithm for obtaining vector representations for words. Training is performed on aggregated global word-word co-occurrence statistics from a corpus, and the resulting representations showcase interesting linear substructures of the word vector space.</p>
+
+<p>Even if we already use an Embedding Layer to avoid sparsity and reduce dimensionality, a pre-trained word embedding can be very interesting since it already contains information from thousands of lines of various text. We can see it as a type of transfer learning, which can be very useful since we don&rsquo;t have much data.</p>
+
+<p>I used GloVe rather than Word2Vec because I already had the occasion to work with the second one.</p>
+
+<p>We are going to load the Glove Vectors and then replace our sequences of words by sequences of vectors, and then feed them to a network (thus making the embedding not trainable).</p>
+
+<pre><code class="language-python">def loadGloveModel(gloveFile):
+    print(&quot;Loading Glove Model&quot;)
+    f = open(gloveFile,'r' ,  encoding=&quot;utf8&quot;)
+    model = {}
+    for line in f:
+        splitLine = line.split()
+        word = splitLine[0]
+        embedding = np.array([float(val) for val in splitLine[1:]])
+        model[word] = embedding
+    print(&quot;Done.&quot;,len(model),&quot; words loaded!&quot;)
+    return model
+
+
+model = loadGloveModel('C:/Users/Ahmed/Desktop/Projects/glove/glove.6B.100d.txt')
+</code></pre>
+
+<pre><code>Loading Glove Model
+Done. 400000  words loaded!
+</code></pre>
+
+<pre><code class="language-python">#Vectorisation : We reprocess the whole text without stemming.
+
+&quot;&quot;&quot;model = KeyedVectors.load_word2vec_format('C:/Users/Ahmed/Desktop/stocks/wikipedia/GoogleNews-vectors-negative300.bin',
+                                          binary=True)&quot;&quot;&quot;
+
+
+treebank_tokenizer = TreebankWordTokenizer()
+lem = WordNetLemmatizer()
+stemmer = PorterStemmer()
+
+def preprocess(x):
+    tk = treebank_tokenizer.tokenize(x)
+    tk = [s.lower() for s in tk]
+    return tk
+
+def vectorize(sentences, B):
+    
+    lens = sentences.apply(lambda x:len(x))
+    ebds = []
+    tsteps = max(lens)
+    
+    X = np.zeros((len(sentences) , tsteps , B))
+    
+    for i in range(len(sentences)):
+        
+        words = sentences[i]
+        k = tsteps -1
+        
+        for word in words[::-1] :
+            try:
+                X[i , k] = model[word]
+                k = k - 1
+            except:
+                lens[i] = lens[i] - 1
+                
+    ntsteps = max(lens)
+    
+    return X[: , (tsteps - ntsteps): ]
+
+
+
+sentences = st_df.Phrase.apply(preprocess)
+sentences = sentences.reset_index(drop = True)
+
+X = vectorize(sentences , 100)
+Y = pd.get_dummies(st_df.Sentiment).values
+
+model = None
+
+print(&quot;X's shape :&quot; , X.shape)
+print(&quot;Y's shape :&quot; , Y.shape)
+</code></pre>
+
+<pre><code>X's shape : (62437, 52, 100)
+Y's shape : (62437, 5)
+</code></pre>
+
+<pre><code class="language-python"># Model
+
+def model(X , Y , 
+          lstm_layers = [] , lstm_dropout = [],
+          cnn_layers = [] , cnn_kernels = [] , cnn_dropout = [], 
+          max_pooling_layers = [] , max_pooling = False ,
+          dense_layers = [] , dense_dropout = [] ,
+          ntest_sers = 400 , epochs = 10 , batch_size = 32 , lr = 0.001 , decay = 0 , beta_1 = 0.9 , beta_2 = 0.999):
+        
+        
+    # training and testing set :
+    length , timesteps , features = X.shape[0] , X.shape[1] , X.shape[2]
+
+    target_shape = Y.shape[1]
+    
+    # Validation rate to pass to the Sequential Model :
+    val_rate = ntest_sers/length
+    
+    
+    
+    
+    ############################################ Model :
+    
+    history = History()
+    checkpoint = ModelCheckpoint('models/model' , save_best_only=True)
+    #tensorboard = keras.callbacks.TensorBoard(log_dir='./logs/log_25'.format(time()))
+                                              #, histogram_freq=0, write_graph=True, write_images=False)
+    
+    model = Sequential()
+
+    
+    
+    # Conv Layers
+    for i in range(len(cnn_layers)):
+ 
+        model.add(Conv1D(cnn_layers[i] , cnn_kernels[i], input_shape=(X.shape[1], X.shape[2]) ,padding = 'same' ) )
+        model.add(BatchNormalization())
+        model.add(Activation('relu'))
+        #model.add(Dropout(cnn_dropout[i]))
+        
+        if max_pooling:
+            model.add(MaxPooling1D(max_pooling_layers[i]))
+    
+    if len(lstm_layers) ==0:
+        #model.add(Reshape((-1,)))
+        
+        #model.add( Reshape((cnn_layers[-1], X.shape[1]))  ) #for max pooling over time 
+        model.add(GlobalMaxPooling1D())
+    
+    
+    
+    
+    # BI-LSTM Layers
+    for i in range(len(lstm_layers)):
+        
+        rsequs  = not (i == (len(lstm_layers) - 1))
+        model.add(Bidirectional( LSTM(lstm_layers[i] , return_sequences = rsequs) , input_shape=(X.shape[1], X.shape[2]) ) )
+        
+        if len(lstm_dropout)&gt;0:
+            model.add(Dropout(lstm_dropout[i]))
+
+
+            
+            
+            
+            
+            
+    for i in range(len(dense_layers)):
+         
+        model.add(Dense(dense_layers[i] , activation = 'relu') )
+        
+        if len(dense_dropout)&gt;0:
+            model.add(Dropout(dense_dropout[i]))
+        
+
+        
+        
+        
+    model.add(Dense(target_shape , activation = 'softmax'))
+
+    adm = keras.optimizers.Adam(lr = lr , decay = decay)
+    sgd = keras.optimizers.SGD(lr=0.0001, nesterov=True, momentum=0.7, decay=1e-4)
+    Nadam = keras.optimizers.Nadam(lr = lr , beta_1=0.9, beta_2=0.999, epsilon=1e-08)#, schedule_decay=0.0004)
+    model.compile(loss='categorical_crossentropy', optimizer= Nadam , metrics = ['accuracy'])
+
+    
+    # fitting the data
+    model.fit(X, Y, epochs= epochs, batch_size=batch_size, validation_split = val_rate ,
+              callbacks = [history , checkpoint ])
+    
+    
+    # loading best_model
+    model = load_model('models/model')
+
+              
+    # loading best_model
+    return model , min(history.history['val_loss'])
+</code></pre>
+
+<h4 id="conv-lstm-network">Conv-LSTM Network :</h4>
+
+<p>We will try various architectures. Below is the training for the Conv-LSTM network, but previous architectures were tested too :</p>
+
+<pre><code class="language-python">val = 700
+
+results = model( X , Y , 
+               cnn_layers = [128] , cnn_kernels = [3 , 3 ] , cnn_dropout = [.5 ],
+               #max_pooling_layers = [3 ] , max_pooling = True ,
+               lstm_layers = [128 ] , lstm_dropout = [.5 ],
+               dense_layers = [64 ] , dense_dropout = [.5],
+               batch_size = 256 , epochs = 15 , ntest_sers = val , lr = 0.001 )
+</code></pre>
+
+<pre><code>Train on 61737 samples, validate on 700 samples
+Epoch 1/15
+61737/61737 [==============================] - 53s 854us/step - loss: 1.3531 - acc: 0.4069 - val_loss: 1.8604 - val_acc: 0.3100
+Epoch 2/15
+61737/61737 [==============================] - 47s 758us/step - loss: 1.2000 - acc: 0.4816 - val_loss: 1.4132 - val_acc: 0.3943
+Epoch 3/15
+61737/61737 [==============================] - 47s 759us/step - loss: 1.1268 - acc: 0.5141 - val_loss: 1.3138 - val_acc: 0.4357
+Epoch 4/15
+61737/61737 [==============================] - 47s 755us/step - loss: 1.0671 - acc: 0.5360 - val_loss: 1.4305 - val_acc: 0.4200
+Epoch 5/15
+61737/61737 [==============================] - 47s 758us/step - loss: 1.0174 - acc: 0.5580 - val_loss: 1.5639 - val_acc: 0.4043
+Epoch 6/15
+61737/61737 [==============================] - 48s 772us/step - loss: 0.9704 - acc: 0.5785 - val_loss: 1.7712 - val_acc: 0.3800
+Epoch 7/15
+61737/61737 [==============================] - 47s 766us/step - loss: 0.9388 - acc: 0.5941 - val_loss: 1.5401 - val_acc: 0.4243
+Epoch 8/15
+61737/61737 [==============================] - 47s 758us/step - loss: 0.9022 - acc: 0.6086 - val_loss: 1.6539 - val_acc: 0.4286
+Epoch 9/15
+61737/61737 [==============================] - 47s 756us/step - loss: 0.8751 - acc: 0.6179 - val_loss: 1.4723 - val_acc: 0.4371
+Epoch 10/15
+61737/61737 [==============================] - 47s 755us/step - loss: 0.8528 - acc: 0.6271 - val_loss: 1.5868 - val_acc: 0.4314
+Epoch 11/15
+61737/61737 [==============================] - 47s 757us/step - loss: 0.8313 - acc: 0.6373 - val_loss: 1.8199 - val_acc: 0.4086
+Epoch 12/15
+61737/61737 [==============================] - 47s 755us/step - loss: 0.8122 - acc: 0.6440 - val_loss: 1.6352 - val_acc: 0.4243
+Epoch 13/15
+61737/61737 [==============================] - 47s 758us/step - loss: 0.7903 - acc: 0.6550 - val_loss: 1.5513 - val_acc: 0.4457
+Epoch 14/15
+61737/61737 [==============================] - 47s 764us/step - loss: 0.7775 - acc: 0.6607 - val_loss: 1.9355 - val_acc: 0.4129
+Epoch 15/15
+61737/61737 [==============================] - 47s 764us/step - loss: 0.7598 - acc: 0.6677 - val_loss: 2.0116 - val_acc: 0.4157
+</code></pre>
+
+<p>It seems that stacking these two layers doesn&rsquo;t add much compared to taking the two architectures alone.</p>
+
+<pre><code class="language-python"># https://www.kaggle.com/jonsteve/user-reviews-on-rotten-tomatoes
+
+# prediction
+y_score = results[0].predict(X[-val:])
+y_pred = np.argmax(y_score , axis = 1)
+
+# True values
+y_test = st_df.Sentiment.values[-val:]
+
+# Confusion matrix
+hmap = confusion_matrix(y_test , y_pred)
+sns.heatmap(hmap , cmap = 'Blues' , annot = True)
+plt.show()
+
+# Metrics :
+print('accuracy :' , accuracy_score(y_test , y_pred))
+print('precisions :' , precision_score(y_test , y_pred , average = None))
+print('recalls :' , recall_score(y_test , y_pred , average = None))
+</code></pre>
+
+<p><img src="/sentiment/output_68_0.png" alt="png" /></p>
+
+<pre><code>accuracy : 0.435714285714
+precisions : [ 0.54545455  0.38834951  0.33333333  0.48623853  0.65      ]
+recalls : [ 0.06382979  0.66298343  0.265625    0.5492228   0.375     ]
+</code></pre>
+
+<pre><code class="language-python"># Compute ROC curve and ROC area for each class
+fpr = dict()
+tpr = dict()
+roc_auc = dict()
+n_classes = 5
+
+for i in range(n_classes):
+    fpr[i], tpr[i], _ = roc_curve(y_test, y_score[:, i] , pos_label = i)
+    roc_auc[i] = auc(fpr[i], tpr[i])
+
+# Plot of a ROC curve for a specific class
+for i in range(n_classes):
+    print('class no :' , i )
+    
+    plt.figure()
+    plt.plot(fpr[i], tpr[i], label='ROC curve (area = %0.2f)' % roc_auc[i])
+    plt.plot([0, 1], [0, 1], 'k--')
+    plt.xlim([0.0, 1.0])
+    plt.ylim([0.0, 1.05])
+    plt.xlabel('False Positive Rate')
+    plt.ylabel('True Positive Rate')
+    plt.title('Receiver operating characteristic example')
+    plt.legend(loc=&quot;lower right&quot;)
+    plt.show()
+</code></pre>
+
+<pre><code>class no : 0
+</code></pre>
+
+<p><img src="/sentiment/output_69_1.png" alt="png" /></p>
+
+<pre><code>class no : 1
+</code></pre>
+
+<p><img src="/sentiment/output_69_3.png" alt="png" /></p>
+
+<pre><code>class no : 2
+</code></pre>
+
+<p><img src="/sentiment/output_69_5.png" alt="png" /></p>
+
+<pre><code>class no : 3
+</code></pre>
+
+<p><img src="/sentiment/output_69_7.png" alt="png" /></p>
+
+<pre><code>class no : 4
+</code></pre>
+
+<p><img src="/sentiment/output_69_9.png" alt="png" /></p>
+
+<h3 id="parallel-model">Parallel Model :</h3>
+
+<p>Let&rsquo;s Now try to implement a newer architecture. I wanted to try this architecture because it represents another way of combining the convolutional layers and the LSTM layers. Here is the architecture proposed by the paper:</p>
+
+<p><a href="https://arxiv.org/pdf/1709.05206.pdf">https://arxiv.org/pdf/1709.05206.pdf</a></p>
+
+<p><img src="/sentiment/LSTM-FCN.png" style="width: 700px;"></p>
+
+<p>Instead of stacking sequentially the different layers, this architecture proposes to combine them in a parallel way. Let&rsquo;s see if we can improve previous results. Again, we won&rsquo;t apply any training or fine tuning, so the results are probably far from optimal.</p>
+
+<pre><code class="language-python">def par_model(X , Y , ntest_sers = 700 , lr = 0.001 , cnn_layers = [128] , cnn_kernels = [3 , 3 , 3] ,
+              cnn_dropout = [.5 , .5] 
+              , lstm_layers = [128] , lstm_dropout = [.5]  ):
+    
+    
+    inp = Input(shape = (X.shape[1] , X.shape[2]))
+    
+    # Convolutional Part
+    
+    for i in range(len(cnn_layers)):
+        x1 = Conv1D(cnn_layers[i] , cnn_kernels[i], padding = 'same' )(inp)
+        x1 = BatchNormalization()(x1)
+        x1 = Activation('relu')(x1)
+        x1 = Dropout(cnn_dropout[0])(x1)
+    
+
+    
+    #x1 = GlobalMaxPooling1D()(x1)
+    x1 = GlobalMaxPooling1D()(x1)
+    
+    # BI lSTM part :
+    x2 = Bidirectional( LSTM(lstm_layers[0] , return_sequences = False))(inp)
+    x2 = Dropout(lstm_dropout[0])(x2)
+      
+    # Concatenation 
+    x = Concatenate(axis = -1)([x1 , x2])
+    
+    # Dense layer 
+    x = Dense(128 , activation = 'relu')(x)
+    
+    # Output 
+    x = Dense(5 , activation = 'softmax')(x)
+    
+    
+    model = Model(inputs=inp, outputs=x)
+    Nadam = keras.optimizers.Nadam(lr = lr , beta_1=0.9, beta_2=0.999, epsilon=1e-08)#, schedule_decay=0.0004)
+    model.compile(loss='categorical_crossentropy', optimizer= Nadam , metrics = ['accuracy'])
+    
+    
+    model.fit(X, Y, epochs= 20, batch_size=256, validation_split = ntest_sers/X.shape[0])
+    
+    return model
+</code></pre>
+
+<pre><code class="language-python">results = par_model(X , Y)
+</code></pre>
+
+<pre><code>Train on 61737 samples, validate on 700 samples
+Epoch 1/20
+61737/61737 [==============================] - 48s 771us/step - loss: 1.4154 - acc: 0.4003 - val_loss: 1.4295 - val_acc: 0.3686
+Epoch 2/20
+61737/61737 [==============================] - 42s 677us/step - loss: 1.2136 - acc: 0.4678 - val_loss: 1.5324 - val_acc: 0.3257
+Epoch 3/20
+61737/61737 [==============================] - 42s 679us/step - loss: 1.1605 - acc: 0.4933 - val_loss: 1.3488 - val_acc: 0.4086
+Epoch 4/20
+61737/61737 [==============================] - 42s 677us/step - loss: 1.1170 - acc: 0.5128 - val_loss: 1.3628 - val_acc: 0.3657
+Epoch 5/20
+61737/61737 [==============================] - 42s 678us/step - loss: 1.0802 - acc: 0.5299 - val_loss: 1.3680 - val_acc: 0.4271
+Epoch 6/20
+61737/61737 [==============================] - 42s 678us/step - loss: 1.0459 - acc: 0.5448 - val_loss: 1.3819 - val_acc: 0.3957
+Epoch 7/20
+61737/61737 [==============================] - 42s 678us/step - loss: 1.0092 - acc: 0.5609 - val_loss: 1.3219 - val_acc: 0.4186
+Epoch 8/20
+61737/61737 [==============================] - 42s 680us/step - loss: 0.9714 - acc: 0.5787 - val_loss: 1.3337 - val_acc: 0.4200
+Epoch 9/20
+61737/61737 [==============================] - 42s 676us/step - loss: 0.9447 - acc: 0.5911 - val_loss: 1.3566 - val_acc: 0.4314
+Epoch 10/20
+61737/61737 [==============================] - 42s 678us/step - loss: 0.9131 - acc: 0.6037 - val_loss: 1.4819 - val_acc: 0.3786
+Epoch 11/20
+61737/61737 [==============================] - 43s 695us/step - loss: 0.8859 - acc: 0.6142 - val_loss: 1.5417 - val_acc: 0.3714
+Epoch 12/20
+61737/61737 [==============================] - 42s 688us/step - loss: 0.8646 - acc: 0.6246 - val_loss: 1.3255 - val_acc: 0.4443
+Epoch 13/20
+61737/61737 [==============================] - 42s 677us/step - loss: 0.8366 - acc: 0.6363 - val_loss: 1.4330 - val_acc: 0.4386
+Epoch 14/20
+61737/61737 [==============================] - 42s 675us/step - loss: 0.8156 - acc: 0.6476 - val_loss: 1.5562 - val_acc: 0.4000
+Epoch 15/20
+61737/61737 [==============================] - 42s 675us/step - loss: 0.7949 - acc: 0.6550 - val_loss: 1.5076 - val_acc: 0.4171
+Epoch 16/20
+61737/61737 [==============================] - 42s 676us/step - loss: 0.7785 - acc: 0.6626 - val_loss: 1.4323 - val_acc: 0.4543
+Epoch 17/20
+61737/61737 [==============================] - 42s 675us/step - loss: 0.7553 - acc: 0.6712 - val_loss: 1.6008 - val_acc: 0.4400
+Epoch 18/20
+61737/61737 [==============================] - 42s 678us/step - loss: 0.7410 - acc: 0.6790 - val_loss: 1.5662 - val_acc: 0.4286
+Epoch 19/20
+61737/61737 [==============================] - 42s 675us/step - loss: 0.7219 - acc: 0.6867 - val_loss: 1.5244 - val_acc: 0.4543
+Epoch 20/20
+61737/61737 [==============================] - 42s 676us/step - loss: 0.7017 - acc: 0.6940 - val_loss: 1.6028 - val_acc: 0.4371
+</code></pre>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>This project has been very interesting for me since it allowed me to test a lot of ideas I had.
+for lack of time, I did not go into more depth of this study. I am aware that there are many points that require more rigor, but my goal was mainly to implement all these technics myself and see its efficiency, and not to optimize performance to make a submission in the competition.</p>
+
+<p>I still have a lot of Ideas that I still want to try:</p>
+
+<ul>
+<li>Try to combine these models with more traditional NLP methods.</li>
+<li>Initialize the embedding layer with glove/Word2vec vectors to make these vectors trainable.</li>
+<li>Use transfer learning Transfer with a more consistent dataset rather than train the network from scratch.</li>
+<li>See if Multi-tasking can improve performance.</li>
+<li>Use advanced fine-tuning technics to improve the performance. (Random Search, Genetic Algorithm)</li>
+<li>Train the network more efficiently (Like described in the paper).</li>
+</ul>
+
+<p>These are all ideas that I want to try but I don’t have time to do that right away, but it will probably be the subject of another project.</p>
+
+<p>Thanks for reading this project, I hope that you enjoyed it.</p>
+</div>
+            <div class="footer">
+                <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+
+<script type="text/javascript">
+    hljs.configure({languages: []});
+    hljs.initHighlightingOnLoad();
+</script>
+
+
+            </div>
+        </div>
+        
+                
+    </body>
+</html>
