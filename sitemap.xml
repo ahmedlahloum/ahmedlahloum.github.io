@@ -3,106 +3,106 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>https://example.com/posts/sentiment-analysis/</loc>
+    <loc>https://ahmedlahloum.github.io/posts/sentiment-analysis/</loc>
     <lastmod>2018-05-26T19:09:14+01:00</lastmod>
   </url>
   
   <url>
-    <loc>https://example.com/posts/welcome/</loc>
+    <loc>https://ahmedlahloum.github.io/posts/welcome/</loc>
     <lastmod>2018-05-26T18:10:14+01:00</lastmod>
   </url>
   
   <url>
-    <loc>https://example.com/</loc>
+    <loc>https://ahmedlahloum.github.io/</loc>
     <lastmod>2018-05-26T19:09:14+01:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://example.com/categories/</loc>
+    <loc>https://ahmedlahloum.github.io/categories/</loc>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://example.com/tags/cnn/</loc>
+    <loc>https://ahmedlahloum.github.io/tags/cnn/</loc>
     <lastmod>2018-05-26T19:09:14+01:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://example.com/categories/code/</loc>
+    <loc>https://ahmedlahloum.github.io/categories/code/</loc>
     <lastmod>2018-05-26T19:09:14+01:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://example.com/tags/data-science/</loc>
-    <lastmod>2018-05-26T18:10:14+01:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://example.com/tags/deep-learning/</loc>
-    <lastmod>2018-05-26T19:09:14+01:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://example.com/tags/keras/</loc>
-    <lastmod>2018-05-26T19:09:14+01:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://example.com/tags/lstm/</loc>
-    <lastmod>2018-05-26T19:09:14+01:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://example.com/tags/nlp/</loc>
-    <lastmod>2018-05-26T19:09:14+01:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://example.com/posts/</loc>
-    <lastmod>2018-05-26T19:09:14+01:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://example.com/tags/projects/</loc>
+    <loc>https://ahmedlahloum.github.io/tags/data-science/</loc>
     <lastmod>2018-05-26T18:10:14+01:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://example.com/tags/python/</loc>
+    <loc>https://ahmedlahloum.github.io/tags/deep-learning/</loc>
     <lastmod>2018-05-26T19:09:14+01:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://example.com/tags/sentiment-analysis/</loc>
+    <loc>https://ahmedlahloum.github.io/tags/keras/</loc>
     <lastmod>2018-05-26T19:09:14+01:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://example.com/tags/</loc>
+    <loc>https://ahmedlahloum.github.io/tags/lstm/</loc>
     <lastmod>2018-05-26T19:09:14+01:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://example.com/categories/tutorials/</loc>
+    <loc>https://ahmedlahloum.github.io/tags/nlp/</loc>
     <lastmod>2018-05-26T19:09:14+01:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://example.com/tags/welcome/</loc>
+    <loc>https://ahmedlahloum.github.io/posts/</loc>
+    <lastmod>2018-05-26T19:09:14+01:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://ahmedlahloum.github.io/tags/projects/</loc>
+    <lastmod>2018-05-26T18:10:14+01:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://ahmedlahloum.github.io/tags/python/</loc>
+    <lastmod>2018-05-26T19:09:14+01:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://ahmedlahloum.github.io/tags/sentiment-analysis/</loc>
+    <lastmod>2018-05-26T19:09:14+01:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://ahmedlahloum.github.io/tags/</loc>
+    <lastmod>2018-05-26T19:09:14+01:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://ahmedlahloum.github.io/categories/tutorials/</loc>
+    <lastmod>2018-05-26T19:09:14+01:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://ahmedlahloum.github.io/tags/welcome/</loc>
     <lastmod>2018-05-26T18:10:14+01:00</lastmod>
     <priority>0</priority>
   </url>
