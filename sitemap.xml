@@ -4,6 +4,11 @@
   
   <url>
     <loc>https://ahmedlahloum.github.io/posts/sentiment-analysis/</loc>
+    <lastmod>2018-05-27T19:09:14+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://ahmedlahloum.github.io/posts/bump-hunting/</loc>
     <lastmod>2018-05-26T19:09:14+01:00</lastmod>
   </url>
   
@@ -14,6 +19,12 @@
   
   <url>
     <loc>https://ahmedlahloum.github.io/</loc>
+    <lastmod>2018-05-27T19:09:14+01:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://ahmedlahloum.github.io/tags/bump-hunting/</loc>
     <lastmod>2018-05-26T19:09:14+01:00</lastmod>
     <priority>0</priority>
   </url>
@@ -24,14 +35,20 @@
   </url>
   
   <url>
-    <loc>https://ahmedlahloum.github.io/tags/cnn/</loc>
+    <loc>https://ahmedlahloum.github.io/tags/cn2-algorithm/</loc>
     <lastmod>2018-05-26T19:09:14+01:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
+    <loc>https://ahmedlahloum.github.io/tags/cnn/</loc>
+    <lastmod>2018-05-27T19:09:14+01:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://ahmedlahloum.github.io/categories/code/</loc>
-    <lastmod>2018-05-26T19:09:14+01:00</lastmod>
+    <lastmod>2018-05-27T19:09:14+01:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -43,31 +60,43 @@
   
   <url>
     <loc>https://ahmedlahloum.github.io/tags/deep-learning/</loc>
-    <lastmod>2018-05-26T19:09:14+01:00</lastmod>
+    <lastmod>2018-05-27T19:09:14+01:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://ahmedlahloum.github.io/tags/keras/</loc>
-    <lastmod>2018-05-26T19:09:14+01:00</lastmod>
+    <lastmod>2018-05-27T19:09:14+01:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://ahmedlahloum.github.io/tags/lstm/</loc>
+    <lastmod>2018-05-27T19:09:14+01:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://ahmedlahloum.github.io/tags/machine-learning/</loc>
     <lastmod>2018-05-26T19:09:14+01:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://ahmedlahloum.github.io/tags/nlp/</loc>
+    <lastmod>2018-05-27T19:09:14+01:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://ahmedlahloum.github.io/tags/orange/</loc>
     <lastmod>2018-05-26T19:09:14+01:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://ahmedlahloum.github.io/posts/</loc>
-    <lastmod>2018-05-26T19:09:14+01:00</lastmod>
+    <lastmod>2018-05-27T19:09:14+01:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -79,13 +108,19 @@
   
   <url>
     <loc>https://ahmedlahloum.github.io/tags/python/</loc>
+    <lastmod>2018-05-27T19:09:14+01:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://ahmedlahloum.github.io/tags/rule-mining/</loc>
     <lastmod>2018-05-26T19:09:14+01:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://ahmedlahloum.github.io/tags/sentiment-analysis/</loc>
-    <lastmod>2018-05-26T19:09:14+01:00</lastmod>
+    <lastmod>2018-05-27T19:09:14+01:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -97,7 +132,7 @@
   
   <url>
     <loc>https://ahmedlahloum.github.io/categories/tutorials/</loc>
-    <lastmod>2018-05-26T19:09:14+01:00</lastmod>
+    <lastmod>2018-05-27T19:09:14+01:00</lastmod>
     <priority>0</priority>
   </url>
   

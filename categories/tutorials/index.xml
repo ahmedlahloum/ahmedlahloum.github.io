@@ -6,7 +6,7 @@
     <description>Recent content in Tutorials on Ahmed Lahlou Mimi</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Sat, 26 May 2018 19:09:14 +0100</lastBuildDate>
+    <lastBuildDate>Sun, 27 May 2018 19:09:14 +0100</lastBuildDate>
     
 	<atom:link href="https://ahmedlahloum.github.io/categories/tutorials/index.xml" rel="self" type="application/rss+xml" />
     
@@ -14,13 +14,30 @@
     <item>
       <title>Sentiment Analysis using Convolutional Neural Networks and Bidirectional LSTMs.</title>
       <link>https://ahmedlahloum.github.io/posts/sentiment-analysis/</link>
-      <pubDate>Sat, 26 May 2018 19:09:14 +0100</pubDate>
+      <pubDate>Sun, 27 May 2018 19:09:14 +0100</pubDate>
       
       <guid>https://ahmedlahloum.github.io/posts/sentiment-analysis/</guid>
       <description>&lt;p&gt;&lt;img src=&#34;https://ahmedlahloum.github.io/sentiment/sentiment.png&#34; alt=&#34;png&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;With the rise of social medias, Sentiment Analysis, which is one of the most well-known NLP tasks, gained a lot of importance over the years. The recent advances made on Machine Learning and Deep Learning made it an even more active task where a lot of work and research is still done.
 The goal of this project is to explore and apply the most recent technics used in this task involving Deep learning and Neural Networks and to see and quantify the benefit of using those technics to this kind of problem. This is also an opportunity for me to develop my skills in this field and test several ideas I always wanted to implement.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Association Rule Learning by Bump Hunting.</title>
+      <link>https://ahmedlahloum.github.io/posts/bump-hunting/</link>
+      <pubDate>Sat, 26 May 2018 19:09:14 +0100</pubDate>
+      
+      <guid>https://ahmedlahloum.github.io/posts/bump-hunting/</guid>
+      <description>&lt;h1 id=&#34;introduction&#34;&gt;Introduction:&lt;/h1&gt;
+
+&lt;p&gt;Bump Hunting is the process of finding regions space (defined by the features) with high or low values for the target variable. The goal of Bump Hunting is not to classify the observations but to find regions where the density of a certain class of the target is Highly or poorly represented:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://ahmedlahloum.github.io/bumps/bump.png&#34; alt=&#34;png&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;In the other hand, Association rule learning is a rule-based machine learning method for discovering interesting relations between the features and the target variable that we can formalize simply.&lt;/p&gt;
 
 &lt;p&gt;&lt;/p&gt;</description>
     </item>

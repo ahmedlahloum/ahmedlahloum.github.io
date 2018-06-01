@@ -12,9 +12,27 @@
     
     
     <item>
+      <title>Bump Hunting</title>
+      <link>https://ahmedlahloum.github.io/tags/bump-hunting/</link>
+      <pubDate>Sat, 26 May 2018 19:09:14 +0100</pubDate>
+      
+      <guid>https://ahmedlahloum.github.io/tags/bump-hunting/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Cn2 Algorithm</title>
+      <link>https://ahmedlahloum.github.io/tags/cn2-algorithm/</link>
+      <pubDate>Sat, 26 May 2018 19:09:14 +0100</pubDate>
+      
+      <guid>https://ahmedlahloum.github.io/tags/cn2-algorithm/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Cnn</title>
       <link>https://ahmedlahloum.github.io/tags/cnn/</link>
-      <pubDate>Sat, 26 May 2018 19:09:14 +0100</pubDate>
+      <pubDate>Sun, 27 May 2018 19:09:14 +0100</pubDate>
       
       <guid>https://ahmedlahloum.github.io/tags/cnn/</guid>
       <description></description>
@@ -32,7 +50,7 @@
     <item>
       <title>Deep Learning</title>
       <link>https://ahmedlahloum.github.io/tags/deep-learning/</link>
-      <pubDate>Sat, 26 May 2018 19:09:14 +0100</pubDate>
+      <pubDate>Sun, 27 May 2018 19:09:14 +0100</pubDate>
       
       <guid>https://ahmedlahloum.github.io/tags/deep-learning/</guid>
       <description></description>
@@ -41,7 +59,7 @@
     <item>
       <title>Keras</title>
       <link>https://ahmedlahloum.github.io/tags/keras/</link>
-      <pubDate>Sat, 26 May 2018 19:09:14 +0100</pubDate>
+      <pubDate>Sun, 27 May 2018 19:09:14 +0100</pubDate>
       
       <guid>https://ahmedlahloum.github.io/tags/keras/</guid>
       <description></description>
@@ -50,18 +68,36 @@
     <item>
       <title>Lstm</title>
       <link>https://ahmedlahloum.github.io/tags/lstm/</link>
-      <pubDate>Sat, 26 May 2018 19:09:14 +0100</pubDate>
+      <pubDate>Sun, 27 May 2018 19:09:14 +0100</pubDate>
       
       <guid>https://ahmedlahloum.github.io/tags/lstm/</guid>
       <description></description>
     </item>
     
     <item>
-      <title>Nlp</title>
-      <link>https://ahmedlahloum.github.io/tags/nlp/</link>
+      <title>Machine Learning</title>
+      <link>https://ahmedlahloum.github.io/tags/machine-learning/</link>
       <pubDate>Sat, 26 May 2018 19:09:14 +0100</pubDate>
       
+      <guid>https://ahmedlahloum.github.io/tags/machine-learning/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Nlp</title>
+      <link>https://ahmedlahloum.github.io/tags/nlp/</link>
+      <pubDate>Sun, 27 May 2018 19:09:14 +0100</pubDate>
+      
       <guid>https://ahmedlahloum.github.io/tags/nlp/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Orange</title>
+      <link>https://ahmedlahloum.github.io/tags/orange/</link>
+      <pubDate>Sat, 26 May 2018 19:09:14 +0100</pubDate>
+      
+      <guid>https://ahmedlahloum.github.io/tags/orange/</guid>
       <description></description>
     </item>
     
@@ -77,16 +113,25 @@
     <item>
       <title>Python</title>
       <link>https://ahmedlahloum.github.io/tags/python/</link>
-      <pubDate>Sat, 26 May 2018 19:09:14 +0100</pubDate>
+      <pubDate>Sun, 27 May 2018 19:09:14 +0100</pubDate>
       
       <guid>https://ahmedlahloum.github.io/tags/python/</guid>
       <description></description>
     </item>
     
     <item>
+      <title>Rule Mining</title>
+      <link>https://ahmedlahloum.github.io/tags/rule-mining/</link>
+      <pubDate>Sat, 26 May 2018 19:09:14 +0100</pubDate>
+      
+      <guid>https://ahmedlahloum.github.io/tags/rule-mining/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Sentiment Analysis</title>
       <link>https://ahmedlahloum.github.io/tags/sentiment-analysis/</link>
-      <pubDate>Sat, 26 May 2018 19:09:14 +0100</pubDate>
+      <pubDate>Sun, 27 May 2018 19:09:14 +0100</pubDate>
       
       <guid>https://ahmedlahloum.github.io/tags/sentiment-analysis/</guid>
       <description></description>
