@@ -139,7 +139,7 @@
   
   <p><img src="/sentiment/sentiment.png" alt="png" /></p>
 
-<p>With the rise of social medias, Sentiment Analysis, which is one of the most well-known NLP tasks, gained a lot of importance over the years. The recent advances made on Machine Learning and Deep Learning made it an even more active task where a lot of work and research is still done.
+<p>With the rise of social media, Sentiment Analysis, which is one of the most well-known NLP tasks, gained a lot of importance over the years. The recent advances made in Machine Learning and Deep Learning made it an even more active task where a lot of work and research is still done.
 The goal of this project is to explore and apply the most recent technics used in this task involving Deep learning and Neural Networks and to see and quantify the benefit of using those technics to this kind of problem. This is also an opportunity for me to develop my skills in this field and test several ideas I always wanted to implement.</p>
 
 <p></p>
@@ -148,13 +148,13 @@ The goal of this project is to explore and apply the most recent technics used i
 
 <p>Here is a quick description of the dataset coming from the competition’s description: &lsquo;The Rotten Tomatoes movie review dataset is a corpus of movie reviews used for sentiment analysis, &hellip;, You are asked to label phrases on a scale of five values: negative, somewhat negative, neutral, somewhat positive, positive. Obstacles like sentence negation, sarcasm, terseness, language ambiguity, and many others make this task very challenging. &lsquo;</p>
 
-<p>I chose this dataset because I found it more challenging: Traditionally, Sentiment Analysis tasks asks you to classify either a sentence is good or bad. The problem we have is more specific, including 5 levels of sentiment, and involves a more &lsquo;subjective&rsquo; target, which will allow us to see if the latest NLP models can grasp this kind of subtilty better.</p>
+<p>I chose this dataset because I found it more challenging: Traditionally, Sentiment Analysis tasks ask you to classify either a sentence is good or bad. The problem we have is more specific, including 5 levels of sentiment, and involves a more &lsquo;subjective&rsquo; target, which will allow us to see if the latest NLP models can grasp this kind of subtilty better.</p>
 
 <p>More especially, I started this project to Answer those specific questions:</p>
 
 <ul>
-<li>How RNNs and CNNs performs in this kind of problem?</li>
-<li>Can we combine CNNs and RNNs to have better Results?</li>
+<li>How RNNs and CNN perform in this kind of problem?</li>
+<li>Can we combine CNN and RNNs to have better Results?</li>
 <li>What is the benefit of using Pre-trained word embeddings Like Word2Vec or Glove?</li>
 <li>How can we use more &lsquo;traditional&rsquo; NLP tricks Like Stemming, Lemmatization etc. to improve performance?</li>
 <li>Can recent researches improve significantly our results?</li>
@@ -261,13 +261,13 @@ df.head()
 </table>
 </div>
 
-<p>Looking at the shape of the Dataframe, it seems that we have around 150K Sentences, but, many lines are parts of a main sentence. Those parts have also been labeled with a Sentiment. It seems that it is some sort of Data Augmentation performed by the authors to increase the size of the dataset.</p>
+<p>Looking at the shape of the dataframe, it seems that we have around 150K Sentences, but, many lines are parts of a main sentence. Those parts have also been labeled with a Sentiment. It seems that it is some sort of Data Augmentation performed by the authors to increase the size of the dataset.</p>
 
 <p>If we were working on this problem as a competition, we would have kept these parts in both the training and test set, but the goal of the project is to develop a tool capable of determining the sentiment of a whole sentence, and not just a unique word or a part of a sentence that may not even have a sense for us.</p>
 
-<p>But this Improvement of the dataset is still good to the training process of our Model, but worthless during test time, since we want to see the performance of our model in a &lsquo;real&rsquo; situation. Thus, we are going to remove them from the test set only.</p>
+<p>But this Improvement of the dataset is still good for the training process of our Model, but worthless during test time since we want to see the performance of our model in a &lsquo;real&rsquo; situation. Thus, we are going to remove them from the test set only.</p>
 
-<p>But before talking about training and test set, let&rsquo;s first see how many complete sentences we have and then decide of train/test split.</p>
+<p>But before talking about training and test set, let&rsquo;s first see how many complete sentences we have and then decide on train/test split.</p>
 
 <pre><code class="language-python">print('Total number of sentences : ' , len(df.SentenceId.unique()))
 </code></pre>
@@ -275,7 +275,7 @@ df.head()
 <pre><code>Total number of sentences :  8529
 </code></pre>
 
-<p>We have 8529 Sentences. We are going to use 700 sentences for the test set and leave the rest for the training set. Also, we are going to keep only parts of sentences that have a number of words greater than 5 : We assume that they do not bring much value to the model.</p>
+<p>We have 8529 Sentences. We are going to use 700 sentences for the test set and leave the rest for the training set. Also, we are going to keep only parts of sentences that have a number of words greater than 5: We assume that they do not bring much value to the model.</p>
 
 <pre><code class="language-python"># Only complete lines 
 first_df = st_df = df.groupby('SentenceId' , as_index = False).first()
@@ -295,7 +295,7 @@ st_df = df.append(st_df , ignore_index = False).reset_index(drop = True)
 
 <h3 id="distribution-of-the-labels">Distribution of the labels :</h3>
 
-<p>Let&rsquo;s now take a deeper look to the labels we have:</p>
+<p>Let&rsquo;s now take a deeper look at the labels we have:</p>
 
 <pre><code class="language-python"># Sentiment Count 
 
@@ -452,7 +452,7 @@ plt.show()
 
 <p><strong>Sequence length</strong></p>
 
-<p>Let&rsquo;s look at the sequences Lengths, this is important since most of the algorithms we are going to use take fixed shape inputs, we will therefore need to pad the sequences to have equal sizes. This also gives us an idea on the of sentences we have.</p>
+<p>Let&rsquo;s look at the sequences Lengths, this is important since most of the algorithms we are going to use take fixed shape inputs, we will, therefore, need to pad the sequences to have equal sizes. This also gives us an idea on the of sentences we have.</p>
 
 <pre><code class="language-python"># lengths:
 lengths = st_df.Phrase.apply(lambda x:len(x.split(' ')) )
@@ -484,7 +484,7 @@ Name: Phrase, dtype: float64
 
 <p><strong>Vocabulary</strong></p>
 
-<p>Let&rsquo;s take a closer look to the vocabulary of our data. We will first look at the whole vocabular and then see how it changes from a sentiment to another.</p>
+<p>Let&rsquo;s take a closer look at the vocabulary of our data. We will first look at the whole vocabulary and then see how it changes from a sentiment to another.</p>
 
 <pre><code class="language-python">sentences = ' '.join(st_df.Phrase.values)
 print('total number of unique words :' , len(set(sentences.split(' '))))
@@ -626,7 +626,7 @@ Name: 1, dtype: object
 
 <p><img src="/sentiment/output_29_1.png" alt="png" /></p>
 
-<p>There is a non-negligible amount of words that have very few occurrences (either rarely used words, numbers or misspellings). In traditional technics, those words are known to easily lead to overfit and are generally removed from the dataset. But Since we also intend to use pretrained word embeddings like Word2Vec or Glove, we are going to keep this words for the moment.</p>
+<p>There is a non-negligible amount of words that have very few occurrences (either rarely used words, numbers or misspellings). In traditional technics, those words are known to easily lead to overfitting and are generally removed from the dataset. But Since we also intend to use pre-trained word embeddings like Word2Vec or Glove, we are going to keep this words for the moment.</p>
 
 <h2 id="text-preprocessing">Text Preprocessing :</h2>
 
@@ -692,18 +692,18 @@ from sklearn.metrics import recall_score , confusion_matrix, roc_curve, auc
 <ul>
 <li><p>We are going to see what performance we have with an Embedding Layer trained from scratch, and then use a pre-trained Word Embedding (Glove) to see how it improves our Model.</p></li>
 
-<li><p>We are going to test two different neural network architecture that have proven to be particularly adapted to this Kind of situation: first, a 1-Dimensional Convolutional network followed by a Fully connected network. The other architecture is a BI-LSTM Network followed by a Fully Connected Network.</p></li>
+<li><p>We are going to test two different neural network architecture that has proven to be particularly adapted to this Kind of situation: first, a 1-Dimensional Convolutional network followed by a Fully connected network. The other architecture is a BI-LSTM Network followed by a Fully Connected Network.</p></li>
 
-<li><p>After testing separately, the CNN and the LSTM architectures, we are going to try to combine these two networks into a single model. We will first try to stack them in sequential way, then in a parallel way (The parallel architecture is inspired from a research paper that we will discuss later).</p></li>
+<li><p>After testing separately, the CNN and the LSTM architectures, we are going to try to combine these two networks into a single model. We will first try to stack them in a sequential way, then in a parallel way (The parallel architecture is inspired from a research paper that we will discuss later).</p></li>
 </ul>
 
-<p>To simplify the code and to not have to code a model on each try, we are going to use a Function that can perform either the CNN architecture, the BI-LSTM architecture or both stacked in a Sequential way. A simple change in the parameters will allow us to test these 3 networks</p>
+<p>To simplify the code and do not have to code a model on each try, we are going to use a Function that can perform either the CNN architecture, the BI-LSTM architecture or both stacked in a Sequential way. A simple change in the parameters will allow us to test these 3 networks</p>
 
-<h3 id="using-an-embeding-layer">Using an embeding Layer :</h3>
+<h3 id="using-an-embedding-layer">Using an embedding Layer :</h3>
 
 <p>The first set of models we are going to try will be using an embedding Layer to transform the input before feeding it into the network. This layer will be trained from Scratch with the other components of the network. This isn&rsquo;t a good idea since we have relatively few sentences but it will allow us to see how much we can gain by using a pretrained embedding.</p>
 
-<p>We use embeddings because it allows us to avoid the <strong>sparsity</strong> and the <strong>High dimensionality</strong> of One Hot encoded vectors. It also allows us to get a sense of the similarity between the words we have, since it basically converts a word to a vector.</p>
+<p>We use embeddings because it allows us to avoid the <strong>sparsity</strong> and the <strong>High dimensionality</strong> of One Hot encoded vectors. It also allows us to get a sense of the similarity between the words we have since it basically converts a word to a vector.</p>
 
 <p><img src="/sentiment/embedding.png" style="width: 600px;"></p>
 
@@ -711,9 +711,9 @@ from sklearn.metrics import recall_score , confusion_matrix, roc_curve, auc
 
 <h4 id="keras-text-preprocessing">Keras Text preprocessing</h4>
 
-<p>Before creating our model, we need first to convert our text to sequences of tokens, and pad tose sequences to have the same length.</p>
+<p>Before creating our model, we need first to convert our text to sequences of tokens, and pad those sequences to have the same length.</p>
 
-<p>We use Keras text preprocessing fucntions to do that</p>
+<p>We use Keras text preprocessing functions to do that</p>
 
 <pre><code class="language-python"># Tokenizer (object that will split a sentence to a set of toquens. we already did the work with ... à revoir  )
 tokenizer = Tokenizer()
@@ -742,7 +742,7 @@ X's shape :  (62437, 49)
 
 <h4 id="baseline-model">Baseline Model.</h4>
 
-<p>Before building our model, we need fist to build a &lsquo;baseline&rsquo; or &lsquo;dummy&rsquo; model, which will allow us to see if our model is learning anything useful.</p>
+<p>Before building our model, we need first to build a &lsquo;baseline&rsquo; or &lsquo;dummy&rsquo; model, which will allow us to see if our model is learning anything useful.</p>
 
 <p>Since we have a classification problem, let&rsquo;s just see what would be the accuracy of a model that always predict the most recurrent class in our dataset.</p>
 
@@ -754,14 +754,14 @@ X's shape :  (62437, 49)
 
 <h4 id="convolutional-networks">Convolutional Networks:</h4>
 
-<p>We will first try the Convolutional Network. This networks are better known for Computer Vision problems, but they are also widely used in NLP tasks.</p>
+<p>We will first try the Convolutional Network. These networks are better known for Computer Vision problems, but they are also widely used in NLP tasks.</p>
 
-<p>since we have sequences of 1 elements, we will use Conv1D layers (One dimensional Convolutional layers).</p>
+<p>since we have sequences of 1 elements, we will use Conv1D layers (One-dimensional Convolutional layers).</p>
 
 <p><img src="/sentiment/conv1d.jpg" style="width: 600px;"></p>
 
 <p>Convolutional networks have many strengths that make them very useful for this kind of tasks:
-* Use shared weights for every location, thus reducing significativly the number of parameters and allowing to generalise what is learned locally to the whole sequence.
+* Use shared weights for every location, thus reducing significantly the number of parameters and allowing to generalize what is learned locally to the whole sequence.
 * Can detect local patterns and local relationships between data.</p>
 
 <pre><code class="language-python"># Model
@@ -890,7 +890,7 @@ Epoch 10/10
 
 <p>Results: 43% Validation accuracy, which is already good since we have 5 classes to predict.</p>
 
-<p>Validation Accuracy stops improving after a short number of epochs, but the model is globally fast to train. Adding more convolutional layers doesn&rsquo;t impact the performance and even lead to overfit in some cases.</p>
+<p>Validation Accuracy stops improving after a short number of epochs, but the model is globally fast to train. Adding more convolutional layers doesn&rsquo;t impact the performance and even lead to overfitting in some cases.</p>
 
 <p>Since it&rsquo;s our first model, let&rsquo;s take a deeper look at the performance of our model.</p>
 
@@ -967,7 +967,7 @@ class no : 0
 
 <p><img src="/sentiment/output_52_10.png" alt="png" /></p>
 
-<p>We can see that the model is pretty good at separating positive from negative reviews, but performs poorly on the neutral reviews. Those comments generally contain both positive and negative words at the same time, which may confuse this type of network. The model also doesn&rsquo;t perform good when it&rsquo;s about the sentiments 0 and 4. These sentiments are generally classified as their homologs (1 and 3). The difference between these sentiments is subtler and more subjective, which may induce these errors.</p>
+<p>We can see that the model is pretty good at separating positive from negative reviews, but performs poorly on the neutral reviews. Those comments generally contain both positive and negative words at the same time, which may confuse this type of network. The model also doesn&rsquo;t perform well when it&rsquo;s about the sentiments 0 and 4. These sentiments are generally classified as their homologs (1 and 3). The difference between these sentiments is subtler and more subjective, which may induce these errors.</p>
 
 <p>We can also look at some mislabeled reviews to understand more why the model fails at classifying them.</p>
 
@@ -1032,7 +1032,7 @@ Epoch 10/10
 
 <p>No need to look at the results here, we will directly jump to the sequential architecture (Conv LSTM). But before that, let&rsquo;s introduce pre-trained word embeddings.</p>
 
-<h3 id="modeling-using-pre-trained-word-embeding">Modeling : Using Pre-trained Word Embeding.</h3>
+<h3 id="modeling-using-pre-trained-word-embedding">Modeling: Using Pre-trained Word Embedding.</h3>
 
 <p>GloVe is an unsupervised learning algorithm for obtaining vector representations for words. Training is performed on aggregated global word-word co-occurrence statistics from a corpus, and the resulting representations showcase interesting linear substructures of the word vector space.</p>
 
@@ -1265,7 +1265,7 @@ Epoch 15/15
 61737/61737 [==============================] - 47s 764us/step - loss: 0.7598 - acc: 0.6677 - val_loss: 2.0116 - val_acc: 0.4157
 </code></pre>
 
-<p>It seems that stacking these two layers doesn&rsquo;t add much compared to taking the two architectures alone.</p>
+<p>It seems that stacking these two layers don&rsquo;t add much compared to taking the two architectures alone.</p>
 
 <pre><code class="language-python"># https://www.kaggle.com/jonsteve/user-reviews-on-rotten-tomatoes
 
@@ -1353,7 +1353,7 @@ for i in range(n_classes):
 
 <p><img src="/sentiment/LSTM-FCN.png" style="width: 700px;"></p>
 
-<p>Instead of stacking sequentially the different layers, this architecture proposes to combine them in a parallel way. Let&rsquo;s see if we can improve previous results. Again, we won&rsquo;t apply any training or fine tuning, so the results are probably far from optimal.</p>
+<p>Instead of stacking sequentially the different layers, this architecture proposes to combine them in a parallel way. Let&rsquo;s see if we can improve previous results. Again, we won&rsquo;t apply any training or fine-tuning, so the results are probably far from optimal.</p>
 
 <pre><code class="language-python">def par_model(X , Y , ntest_sers = 700 , lr = 0.001 , cnn_layers = [128] , cnn_kernels = [3 , 3 , 3] ,
               cnn_dropout = [.5 , .5] 

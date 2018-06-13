@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://ahmedlahloum.github.io/posts/preventing-traffic-accidents-with-artificial-intelligence/</loc>
+    <lastmod>2018-06-13T22:09:14+01:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://ahmedlahloum.github.io/posts/sentiment-analysis/</loc>
     <lastmod>2018-05-27T19:09:14+01:00</lastmod>
   </url>
@@ -19,7 +24,7 @@
   
   <url>
     <loc>https://ahmedlahloum.github.io/</loc>
-    <lastmod>2018-05-27T19:09:14+01:00</lastmod>
+    <lastmod>2018-06-13T22:09:14+01:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -48,7 +53,7 @@
   
   <url>
     <loc>https://ahmedlahloum.github.io/categories/code/</loc>
-    <lastmod>2018-05-27T19:09:14+01:00</lastmod>
+    <lastmod>2018-06-13T22:09:14+01:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -60,19 +65,19 @@
   
   <url>
     <loc>https://ahmedlahloum.github.io/tags/deep-learning/</loc>
-    <lastmod>2018-05-27T19:09:14+01:00</lastmod>
+    <lastmod>2018-06-13T22:09:14+01:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://ahmedlahloum.github.io/tags/keras/</loc>
-    <lastmod>2018-05-27T19:09:14+01:00</lastmod>
+    <lastmod>2018-06-13T22:09:14+01:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://ahmedlahloum.github.io/tags/lstm/</loc>
-    <lastmod>2018-05-27T19:09:14+01:00</lastmod>
+    <lastmod>2018-06-13T22:09:14+01:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -95,8 +100,14 @@
   </url>
   
   <url>
+    <loc>https://ahmedlahloum.github.io/tags/plotly/</loc>
+    <lastmod>2018-06-13T22:09:14+01:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://ahmedlahloum.github.io/posts/</loc>
-    <lastmod>2018-05-27T19:09:14+01:00</lastmod>
+    <lastmod>2018-06-13T22:09:14+01:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -107,8 +118,14 @@
   </url>
   
   <url>
+    <loc>https://ahmedlahloum.github.io/tags/prophet/</loc>
+    <lastmod>2018-06-13T22:09:14+01:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://ahmedlahloum.github.io/tags/python/</loc>
-    <lastmod>2018-05-27T19:09:14+01:00</lastmod>
+    <lastmod>2018-06-13T22:09:14+01:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -131,8 +148,14 @@
   </url>
   
   <url>
+    <loc>https://ahmedlahloum.github.io/tags/time-series/</loc>
+    <lastmod>2018-06-13T22:09:14+01:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://ahmedlahloum.github.io/categories/tutorials/</loc>
-    <lastmod>2018-05-27T19:09:14+01:00</lastmod>
+    <lastmod>2018-06-13T22:09:14+01:00</lastmod>
     <priority>0</priority>
   </url>
   

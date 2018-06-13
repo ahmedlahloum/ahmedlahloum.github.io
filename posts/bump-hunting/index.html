@@ -141,7 +141,7 @@
 
 <p><img src="/bumps/bump.png" alt="png" /></p>
 
-<p>In the other hand, Association rule learning is a rule-based machine learning method for discovering interesting relations between the features and the target variable that we can formalize simply.</p>
+<p>On the other hand, Association rule learning is a rule-based machine learning method for discovering interesting relations between the features and the target variable that we can formalize simply.</p>
 
 <p></p>
 
@@ -170,13 +170,13 @@ Note: This article summarizes the work of a proof-of-concept I did recently.</p>
 
 <p>As said in the introduction, we are going to use an already existing algorithm and enhance it. This algorithm is the CN2 Algorithm: <a href="https://en.wikipedia.org/wiki/CN2_algorithm">https://en.wikipedia.org/wiki/CN2_algorithm</a></p>
 
-<p>The CN2 induction algorithm is a learning algorithm for rule induction. It is a classification technique designed for the efficient induction of simple, comprehensible rules of form “if cond then predict class”.</p>
+<p>The CN2 induction algorithm is a learning algorithm for rule induction. It is a classification technique designed for the efficient induction of simple, comprehensible rules of the form “if cond then predict class”.</p>
 
 <p>First, we generate multiple subsets of the initial algorithm, then, on each subset, we apply the CN2 Algorithm to extract a large set of rules.</p>
 
 <p>We filter the rules by only keeping the ones with densities that exceeds a certain threshold (set by the user) and that can pass a statistical test that shows if the density gap is significant.</p>
 
-<p>After that, we study the similarities between the extracted rules using graphs to group the ones that are too similar (threshold set by the user), and then select a single rule per group that will be our final output.</p>
+<p>After that, we study the similarities between the extracted rules using graphs to group the ones that are too similar (threshold set by the user) and then select a single rule per group that will be our final output.</p>
 
 <pre><code class="language-python">%%capture
 
@@ -214,7 +214,7 @@ np.random.seed(7)
 
 <p>This function will generate an extract from the original database with a random number of column sand lines (number of columns: number_variables &amp; percentage of the original lines: pct_dataset)</p>
 
-<p>It returns the extract, but also the original dataset with all the lines and the random selected columns (used for later steps).</p>
+<p>It returns the extract, but also the original dataset with all the lines and the randomly selected columns (used for later steps).</p>
 
 <pre><code class="language-python">def random_dataset( data  , pct_dataset):
     
@@ -278,7 +278,7 @@ class Selector(namedtuple('Selector', 'column, op, value')):
         return Selector.OPERATORS[self[1]](X[:, self[0]], self[2])
 </code></pre>
 
-<p>This function generates a set of candidate rules/segments by applying the model on random extracts, and then perform a filter &amp; a sanity check on the rules.</p>
+<p>This function generates a set of candidate rules/segments by applying the model on random extracts and then performs a filter &amp; a sanity check on the rules.</p>
 
 <pre><code class="language-python">def generate_rules(model , data , number_datasets , pct_dataset , purity_th , p_value = 0.1):
     
@@ -310,7 +310,7 @@ To group the segments, we compute a similarity measure between each segment (usi
 * max_rule_length: The maximum length of a rule.
 * purity_th: the minimum purity of a rule to be selected.
 * group_th: All rules that have a similarity level higher than this value will be grouped.
-* number_datasets: Number of random subset to generate.
+* number_datasets: Number of random subsets to generate.
 * pct_dataset: percentage of the original dataset in each subset (float between 0 and 1).
 * p_value: Maximal p-value for the statistical test to be considered significative.</p>
 

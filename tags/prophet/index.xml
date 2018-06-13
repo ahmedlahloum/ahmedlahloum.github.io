@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Deep Learning on Ahmed Lahlou Mimi</title>
-    <link>https://ahmedlahloum.github.io/tags/deep-learning/</link>
-    <description>Recent content in Deep Learning on Ahmed Lahlou Mimi</description>
+    <title>Prophet on Ahmed Lahlou Mimi</title>
+    <link>https://ahmedlahloum.github.io/tags/prophet/</link>
+    <description>Recent content in Prophet on Ahmed Lahlou Mimi</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <lastBuildDate>Wed, 13 Jun 2018 22:09:14 +0100</lastBuildDate>
     
-	<atom:link href="https://ahmedlahloum.github.io/tags/deep-learning/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://ahmedlahloum.github.io/tags/prophet/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
@@ -26,20 +26,6 @@
 &lt;p&gt;Personally, I strongly believe that artificial intelligence can be used for good purposes, and even to save lives. I recently came across this very interesting &lt;a href = &#39;https://apolitical.co/solution_article/las-vegas-forging-big-data-partnership-predict-traffic-accidents/&#39;&gt; article &lt;/a&gt;, which talks about a Machine Learning project whose goal is to predict the number of accidents over the next two hours in Los Angeles to improve road traffic management.&lt;/p&gt;
 
 &lt;p&gt;I found this idea very promising and with great potential for all the big cities of the world, so I decided to apply it to the city where I live currently, Paris. I started by gathering all the possible data made available by the government on this site. I cleaned the data and put it together in one dataset, then translated it and made it available on Kaggle so that anyone interested in this type of project could participate.&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>Sentiment Analysis using Convolutional Neural Networks and Bidirectional LSTMs.</title>
-      <link>https://ahmedlahloum.github.io/posts/sentiment-analysis/</link>
-      <pubDate>Sun, 27 May 2018 19:09:14 +0100</pubDate>
-      
-      <guid>https://ahmedlahloum.github.io/posts/sentiment-analysis/</guid>
-      <description>&lt;p&gt;&lt;img src=&#34;https://ahmedlahloum.github.io/sentiment/sentiment.png&#34; alt=&#34;png&#34; /&gt;&lt;/p&gt;
-
-&lt;p&gt;With the rise of social media, Sentiment Analysis, which is one of the most well-known NLP tasks, gained a lot of importance over the years. The recent advances made in Machine Learning and Deep Learning made it an even more active task where a lot of work and research is still done.
-The goal of this project is to explore and apply the most recent technics used in this task involving Deep learning and Neural Networks and to see and quantify the benefit of using those technics to this kind of problem. This is also an opportunity for me to develop my skills in this field and test several ideas I always wanted to implement.&lt;/p&gt;
 
 &lt;p&gt;&lt;/p&gt;</description>
     </item>
