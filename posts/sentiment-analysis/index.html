@@ -162,6 +162,32 @@ The goal of this project is to explore and apply the most recent technics used i
 
 <p>We will start by an exploration of our dataset, then we will quickly preprocess our dataset before proceeding to the modeling part where we will test several architectures of neural networks and then try to implement an architecture recently proposed in a research paper.</p>
 
+<div id="toc_container">
+<p class="toc_title"><b>Table of Contents</b></p>
+<ul class="toc_list">
+  <li><a href="#first">1 Data Exploration</a>
+  <ul>
+    <li><a href="#sfirst1">1.1 Distribution of the labels</a></li>
+    <li><a href="#sfirst2">1.2 Sequence length, Vocabulary & WordCloud</a></li>
+  </ul>
+</li>
+    
+<li><a href="#second">2 Text Preprocessing</a></li>
+
+<li><a href="#third">3 Modeling</a></li>
+  <ul>
+    <li><a href="#sthird1">3.1 Using an embeding layer</a></li>
+    <li><a href="#sthird2">3.2 Using Pre-trained word embedings</a></li>
+    <li><a href="#sthird3">3.3 Parallel Model</a></li>
+  </ul>
+
+<li><a href="#fourth">4 Conclusion</a></li>
+    
+</ul>
+</div>
+
+<p><a id = 'first' > </a></p>
+
 <h2 id="data-exploration">Data Exploration :</h2>
 
 <pre><code class="language-python">%%capture
@@ -292,6 +318,8 @@ df = df.sample(frac = 1).reset_index(drop = True)
 
 st_df = df.append(st_df , ignore_index = False).reset_index(drop = True)
 </code></pre>
+
+<p><a id = 'sfirst1' > </a></p>
 
 <h3 id="distribution-of-the-labels">Distribution of the labels :</h3>
 
@@ -447,6 +475,8 @@ plt.show()
 </div>
 
 <p>It seems that we have fewer observations for both negative (0) and positive sentences (4), but the difference is not too big with the other classes to justify the need of over/under-sampling or other technics to close the gap.</p>
+
+<p><a id = 'sfirst2' > </a></p>
 
 <h3 id="sequence-length-vocabulary-wordcloud">Sequence length, Vocabulary &amp; WordCloud.</h3>
 
@@ -628,6 +658,8 @@ Name: 1, dtype: object
 
 <p>There is a non-negligible amount of words that have very few occurrences (either rarely used words, numbers or misspellings). In traditional technics, those words are known to easily lead to overfitting and are generally removed from the dataset. But Since we also intend to use pre-trained word embeddings like Word2Vec or Glove, we are going to keep this words for the moment.</p>
 
+<p><a id = 'second' > </a></p>
+
 <h2 id="text-preprocessing">Text Preprocessing :</h2>
 
 <p>The goal of this part is to convert each sentence to a sequence of tokens. We also add stemming and lemmatization (which can be used separately) in a way that we can enable/disable them to see their effect on the model. We will use stemming for the first part where we won&rsquo;t use a pre-trained word embedding. We won&rsquo;t go any further than that since it&rsquo;s not the goal of this project.</p>
@@ -664,6 +696,8 @@ sentences = st_df.Phrase.apply(tokenize)
 sentences = sentences.apply(stem)
 </code></pre>
 
+<p><a id = 'third' > </a></p>
+
 <h2 id="modeling">Modeling:</h2>
 
 <pre><code class="language-python">import keras
@@ -698,6 +732,8 @@ from sklearn.metrics import recall_score , confusion_matrix, roc_curve, auc
 </ul>
 
 <p>To simplify the code and do not have to code a model on each try, we are going to use a Function that can perform either the CNN architecture, the BI-LSTM architecture or both stacked in a Sequential way. A simple change in the parameters will allow us to test these 3 networks</p>
+
+<p><a id = 'sthird1' > </a></p>
 
 <h3 id="using-an-embedding-layer">Using an embedding Layer :</h3>
 
@@ -1032,6 +1068,8 @@ Epoch 10/10
 
 <p>No need to look at the results here, we will directly jump to the sequential architecture (Conv LSTM). But before that, let&rsquo;s introduce pre-trained word embeddings.</p>
 
+<p><a id = 'sthird2' > </a></p>
+
 <h3 id="modeling-using-pre-trained-word-embedding">Modeling: Using Pre-trained Word Embedding.</h3>
 
 <p>GloVe is an unsupervised learning algorithm for obtaining vector representations for words. Training is performed on aggregated global word-word co-occurrence statistics from a corpus, and the resulting representations showcase interesting linear substructures of the word vector space.</p>
@@ -1345,6 +1383,8 @@ for i in range(n_classes):
 
 <p><img src="/sentiment/output_69_9.png" alt="png" /></p>
 
+<p><a id = 'sthird3' > </a></p>
+
 <h3 id="parallel-model">Parallel Model :</h3>
 
 <p>Let&rsquo;s Now try to implement a newer architecture. I wanted to try this architecture because it represents another way of combining the convolutional layers and the LSTM layers. Here is the architecture proposed by the paper:</p>
@@ -1444,6 +1484,8 @@ Epoch 19/20
 Epoch 20/20
 61737/61737 [==============================] - 42s 676us/step - loss: 0.7017 - acc: 0.6940 - val_loss: 1.6028 - val_acc: 0.4371
 </code></pre>
+
+<p><a id = 'fourth' > </a></p>
 
 <h2 id="conclusion">Conclusion</h2>
 

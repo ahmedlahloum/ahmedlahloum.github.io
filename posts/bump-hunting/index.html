@@ -166,6 +166,18 @@ We will use an already existing Algorithm, the CN2 Algorithm. We will enhance it
 <p><br/>
 Note: This article summarizes the work of a proof-of-concept I did recently.</p>
 
+<div id="toc_container">
+<p class="toc_title"><b>Table of Contents</b></p>
+<ul class="toc_list">
+<li><a href="#first">1 The Algorithm</a></li>
+<li><a href="#second">2 Application of the algorithm to our problem</a></li>
+<li><a href="#third">3 Conclusion</a></li>
+    
+</ul>
+</div>
+
+<p><a id = 'first' > </a></p>
+
 <h1 id="the-algorithm">The Algorithm :</h1>
 
 <p>As said in the introduction, we are going to use an already existing algorithm and enhance it. This algorithm is the CN2 Algorithm: <a href="https://en.wikipedia.org/wiki/CN2_algorithm">https://en.wikipedia.org/wiki/CN2_algorithm</a></p>
@@ -357,6 +369,8 @@ To group the segments, we compute a similarity measure between each segment (usi
     return final_rules
 </code></pre>
 
+<p><a id = 'second' > </a></p>
+
 <h1 id="application-of-the-algorithm-to-our-problem">Application of the algorithm to our problem :</h1>
 
 <pre><code class="language-python">collected_frame = Orange.data.Table.from_file('collected_data.csv')
@@ -412,7 +426,9 @@ RULE :  IF PER_License_Age_Main_Driver&lt;=4.0 AND PER_sex==1 AND GEO_Lat&gt;=-1
 
 <p>We were able to isolate multiple segments that are purer than the rest of the dataset and that do not overlap excessively.</p>
 
-<h2 id="conclusion">Conclusion :</h2>
+<p><a id = 'third' > </a></p>
+
+<h1 id="conclusion">Conclusion :</h1>
 
 <p>By enhancing the Cn2 Algorithm, We have been able to isolate several segments of customers who have mostly subscribed after the change in pricing, so these are market niches that we can choose to keep if they benefit us, or we can review our pricing strategy if they represent a loss or a customer segment that is not targeted by this offer.</p>
 </div>
